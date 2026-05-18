@@ -7,11 +7,15 @@ import CategoriesSection from "@/components/sections/CategoriesSection";
 import FeaturedProductsSection from "@/components/sections/FeaturedProductsSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import CTASection from "@/components/sections/CTASection";
+import FAQSection from "@/components/sections/FAQSection";
+import BrandPartnersSection from "@/components/sections/BrandPartnersSection";
+import ArticlesSection from "@/components/sections/ArticlesSection";
 
 export default function HomePage() {
   return (
     <>
       <HeroSection />
+      <BrandPartnersSection />
       <StatsSection />
       <AboutSection />
       <WhyUsSection />
@@ -19,6 +23,8 @@ export default function HomePage() {
       <CategoriesSection />
       <FeaturedProductsSection />
       <TestimonialsSection />
+      <ArticlesSection />
+      <FAQSection />
       <CTASection />
     </>
   );
