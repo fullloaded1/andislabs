@@ -8,6 +8,7 @@ export interface Article {
   category: string;
   date: string;
   readTime: string;
+  views: number;
 }
 
 export const articles: Article[] = [
@@ -29,6 +30,7 @@ export const articles: Article[] = [
     category: "Panduan Alat",
     date: "12 Mei 2026",
     readTime: "4 min read",
+    views: 1245,
   },
   {
     id: 2,
@@ -48,6 +50,7 @@ export const articles: Article[] = [
     category: "Edukasi Reagen",
     date: "05 Mei 2026",
     readTime: "5 min read",
+    views: 872,
   },
   {
     id: 3,
@@ -67,6 +70,7 @@ export const articles: Article[] = [
     category: "Infrastruktur Lab",
     date: "28 April 2026",
     readTime: "6 min read",
+    views: 530,
   },
 ];
 

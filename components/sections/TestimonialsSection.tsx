@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { supabase } from "@/lib/supabase";
 
 /* ── Testimonial data ───────────────────────────────────────── */
 const testimonials = [
@@ -98,6 +99,47 @@ export default function TestimonialsSection() {
   const testiReveal  = useReveal(0.05);
   const stripReveal  = useReveal(0.1);
 
+  const [dbTestis, setDbTestis] = useState(testimonials);
+  const [showForm, setShowForm] = useState(false);
+  const [formData, setFormData] = useState({ name: '', title: '', text: '', rating: 5 });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    const fetchTestis = async () => {
+      const { data, error } = await supabase.from('testimonials').select('*').order('created_at', { ascending: false });
+      if (data && data.length > 0) {
+        const formatted = data.map(t => ({
+           ...t,
+           avatar: t.name.split(' ').map((n: string) => n[0]).join('').substring(0, 2).toUpperCase(),
+           color: t.color || ['teal', 'blue', 'indigo'][Math.floor(Math.random()*3)]
+        }));
+        setDbTestis(formatted);
+      }
+    };
+    fetchTestis();
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    const color = ['teal', 'blue', 'indigo'][Math.floor(Math.random()*3)];
+    const { error } = await supabase.from('testimonials').insert([
+      { name: formData.name, title: formData.title, text: formData.text, rating: formData.rating, color }
+    ]);
+    if (!error) {
+      alert("Testimoni berhasil dikirim!");
+      setShowForm(false);
+      setFormData({ name: '', title: '', text: '', rating: 5 });
+      const { data } = await supabase.from('testimonials').select('*').order('created_at', { ascending: false });
+      if (data) {
+        setDbTestis(data.map(t => ({...t, avatar: t.name.split(' ').map((n: string) => n[0]).join('').substring(0, 2).toUpperCase()})));
+      }
+    } else {
+      alert("Gagal menyimpan testimoni. Pastikan tabel testimonials sudah dibuat di Supabase.");
+    }
+    setIsSubmitting(false);
+  };
+
   return (
     <section className="py-24 md:py-32 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -116,12 +158,51 @@ export default function TestimonialsSection() {
             Kata Mereka
           </h2>
 
-          <p className="text-slate-500 leading-relaxed">
+          <p className="text-slate-500 leading-relaxed mb-6">
             Kepercayaan klien adalah prioritas kami. Inilah yang dikatakan
             mitra-mitra terpercaya Andis Lab.
           </p>
+          <button
+            onClick={() => setShowForm(true)}
+            className="inline-flex bg-teal-600 hover:bg-teal-500 text-white font-semibold px-6 py-2.5 rounded-full text-sm transition-colors"
+          >
+            + Tulis Testimoni
+          </button>
         </div>
       </div>
+
+      {/* ══ Form Modal ══════════════════════════════════════════ */}
+      {showForm && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm">
+          <div className="bg-white rounded-2xl p-6 w-full max-w-md shadow-2xl">
+            <h3 className="text-xl font-bold text-slate-900 mb-4">Tulis Testimoni</h3>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label className="block text-xs font-semibold text-slate-600 mb-1">Nama Lengkap</label>
+                <input required type="text" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-teal-500" placeholder="Misal: Dr. Arifin Kusuma" />
+              </div>
+              <div>
+                <label className="block text-xs font-semibold text-slate-600 mb-1">Jabatan / Instansi</label>
+                <input required type="text" value={formData.title} onChange={e => setFormData({...formData, title: e.target.value})} className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-teal-500" placeholder="Misal: Kepala Lab, UI" />
+              </div>
+              <div>
+                <label className="block text-xs font-semibold text-slate-600 mb-1">Rating (1-5)</label>
+                <input required type="number" min="1" max="5" value={formData.rating} onChange={e => setFormData({...formData, rating: Number(e.target.value)})} className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-teal-500" />
+              </div>
+              <div>
+                <label className="block text-xs font-semibold text-slate-600 mb-1">Pesan Testimoni</label>
+                <textarea required rows={4} value={formData.text} onChange={e => setFormData({...formData, text: e.target.value})} className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-teal-500" placeholder="Pelayanan sangat memuaskan..." />
+              </div>
+              <div className="flex justify-end gap-3 pt-2">
+                <button type="button" onClick={() => setShowForm(false)} className="px-4 py-2 text-sm font-semibold text-slate-500 hover:text-slate-700">Batal</button>
+                <button type="submit" disabled={isSubmitting} className="px-6 py-2 text-sm font-bold text-white bg-teal-600 hover:bg-teal-500 rounded-lg disabled:opacity-50">
+                  {isSubmitting ? "Mengirim..." : "Kirim"}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
 
         {/* ══ Testimonial Grid (static, staggered reveal) ═══════ */}
         <div
@@ -129,7 +210,7 @@ export default function TestimonialsSection() {
           className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
         >
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {testimonials.slice(0, 3).map((t, idx) => (
+            {dbTestis.slice(0, 6).map((t, idx) => (
               <div
                 key={t.name}
                 className={`

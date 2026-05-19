@@ -53,6 +53,7 @@ const services = [
     description:
       "Pengadaan peralatan laboratorium dari brand internasional terkemuka untuk kebutuhan riset, klinis, dan industri dengan jaminan keaslian produk.",
     bullets: ["Instrument Analitik & Presisi", "Peralatan Umum Laboratorium", "Consumables & Reagent"],
+    link: "#kategori",
   },
   {
     color: "blue",
@@ -66,6 +67,7 @@ const services = [
     description:
       "Desain dan fabrikasi furnitur laboratorium custom sesuai standar GLP/GMP: meja lab, lemari asam, hingga sistem penyimpanan reagen.",
     bullets: ["Meja & Bench Lab Custom", "Lemari Asam & Ventilasi", "Lemari Reagen & Storage"],
+    link: "/custom-lab-furnitur",
   },
   {
     color: "indigo",
@@ -79,6 +81,7 @@ const services = [
     description:
       "Dukungan purna jual lengkap: garansi resmi, kalibrasi berkala bersertifikat, dan pelatihan teknis penggunaan alat untuk SDM Anda.",
     bullets: ["Garansi Resmi Pabrikan", "Kalibrasi Berkala Bersertifikat", "Pelatihan Teknis & Operator"],
+    link: "/garansi",
   },
   {
     color: "cyan",
@@ -92,6 +95,7 @@ const services = [
     description:
       "Tim ahli kami siap konsultasi spesifikasi gratis dan membantu proses pengadaan resmi untuk institusi pemerintah maupun swasta.",
     bullets: ["Konsultasi Spesifikasi Gratis", "Pengadaan Resmi & e-Katalog", "Pendampingan Dokumen Tender"],
+    link: "/konsultasi",
   },
 ];
 
@@ -171,7 +175,10 @@ export default function ServicesSection() {
 
                 {/* CTA */}
                 <div className="mt-auto">
-                  <button
+                  <a
+                    href={s.link}
+                    target={s.link.startsWith("http") ? "_blank" : undefined}
+                    rel={s.link.startsWith("http") ? "noopener noreferrer" : undefined}
                     className={`group/btn flex items-center gap-1.5 text-sm font-semibold transition-all duration-200 ${ctaColor[s.color]}`}
                   >
                     Pelajari Lebih Lanjut
@@ -181,7 +188,7 @@ export default function ServicesSection() {
                     >
                       <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                     </svg>
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>

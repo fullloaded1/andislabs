@@ -33,6 +33,14 @@ const slides = [
     headline2: "Lengkap & Terpercaya",
     sub: "Dari pengadaan alat hingga custom furnitur lab, kami adalah one-stop solution untuk kebutuhan riset dan industri Anda.",
   },
+  {
+    id: 3,
+    image: "/images/promo-banner-bg.png",
+    eyebrow: "Product Spotlight & Promo",
+    headline1: "Promo Khusus:",
+    headline2: "MS7-S Magnetic Stirrer",
+    sub: "Dapatkan penawaran harga spesial untuk MS7-S 7\" Square Magnetic Stirrer bulan ini. Dilengkapi Glass Ceramic Plate anti korosi dan kapasitas pengadukan 10 Liter.",
+  },
 ];
 
 export default function HeroSection() {
@@ -51,7 +59,7 @@ export default function HeroSection() {
 
   return (
     <section
-      className="relative w-full overflow-hidden"
+      className="relative w-full overflow-hidden group"
       style={{ marginTop: 68, height: "calc(100vh - 68px)", minHeight: 520 }}
     >
       {/* ── All slide backgrounds stacked — CSS opacity transition ── */}
@@ -88,6 +96,14 @@ export default function HeroSection() {
       {/* ── Text content ── */}
       <div className="relative z-20 h-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 flex items-center">
         <div className="max-w-[540px]">
+          {slide.id === 3 && (
+            <div 
+              className="inline-block bg-red-500 text-white text-xs font-black px-3 py-1 rounded-full mb-4 shadow-md shadow-red-500/30 uppercase tracking-widest" 
+              style={{ animation: "heroTextUp 0.65s ease 0.05s both" }}
+            >
+              🔥 Hot Promo
+            </div>
+          )}
 
           <p
             key={`eyebrow-${current}`}

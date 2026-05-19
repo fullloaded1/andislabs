@@ -26,6 +26,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: `${cat.label} — Katalog Andis Lab`,
     description: cat.deskripsi,
+    alternates: {
+      canonical: `https://andislab.com/${kategori}`,
+    },
   };
 }
 
@@ -49,8 +52,27 @@ export default async function KategoriPage({ params }: PageProps) {
 
   const headerGradient = categoryBgHeader[kategori] || "from-slate-800 to-slate-950";
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": categoryProducts.map((p, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.nama_produk,
+        "description": p.deskripsi_singkat,
+        "image": p.foto_utama,
+      }
+    }))
+  };
+
   return (
     <div className="min-h-screen bg-slate-50 pt-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Header */}
       <div className={`bg-gradient-to-br ${headerGradient} py-14 md:py-20`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
