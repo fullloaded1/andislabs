@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://andislab.com/sitemap.xml',
+    sitemap: 'https://andislabs.com/sitemap.xml',
   };
 }

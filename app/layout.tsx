@@ -27,13 +27,13 @@ export const metadata: Metadata = {
     "andis lab",
     "andislab",
   ],
-  authors: [{ name: "Andis Lab", url: "https://andislab.com" }],
+  authors: [{ name: "Andis Lab", url: "https://andislabs.com" }],
   creator: "Andis Lab",
-  metadataBase: new URL("https://andislab.com"),
+  metadataBase: new URL("https://andislabs.com"),
   openGraph: {
     type: "website",
     locale: "id_ID",
-    url: "https://andislab.com",
+    url: "https://andislabs.com",
     siteName: "Andis Lab",
     title: "Andis Lab — Mitra Terpercaya Laboratorium Indonesia",
     description:
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   alternates: {
-    canonical: "https://andislab.com",
+    canonical: "https://andislabs.com",
   },
 };
 
@@ -71,9 +71,9 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "Andis Lab",
-    "image": "https://andislab.com/logo.png",
+    "image": "https://andislabs.com/logo.png",
     "description": "Distributor resmi peralatan laboratorium, furnitur lab custom, reagent, dan glassware terpercaya di Indonesia.",
-    "url": "https://andislab.com",
+    "url": "https://andislabs.com",
     "telephone": "+6282125523466",
     "address": {
       "@type": "PostalAddress",

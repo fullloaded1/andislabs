@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: article.title,
     description: article.excerpt,
     alternates: {
-      canonical: `https://andislab.com/artikel/${resolvedParams.slug}`,
+      canonical: `https://andislabs.com/artikel/${resolvedParams.slug}`,
     },
   };
 }
@@ -77,7 +77,7 @@ export default async function ArticleDetailPage({ params }: Props) {
     "author": [{
       "@type": "Organization",
       "name": "Andis Lab",
-      "url": "https://andislab.com"
+      "url": "https://andislabs.com"
     }]
   };
 

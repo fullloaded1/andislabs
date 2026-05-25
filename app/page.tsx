@@ -24,7 +24,13 @@ import type { PromoSlideData } from "@/components/sections/HeroSection";
 // - Tidak ada data
 // - Tanggal promo belum mulai atau sudah selesai (otomatis!)
 async function getPromoForHero(): Promise<PromoSlideData | null> {
-  return null; // 👈 PROMO DISEMBUNYIKAN — hapus baris ini untuk mengaktifkan kembali
+  // ── CONTOH PROMO (aktif) — ganti dengan `return null;` untuk menyembunyikan ──
+  return {
+    title: "Promo Mid-Year 2025",
+    tagline: "Diskon spesial alat lab, reagen, dan furniture lab pilihan. Stok terbatas!",
+    badge: "🔥 Penawaran Terbatas",
+    hero_image: "",
+  };
   if (!NOTION_API_KEY || !NOTION_PROMO_DB_ID) return null;
   try {
     const res = await queryNotionDatabase(NOTION_PROMO_DB_ID, { page_size: 1 });

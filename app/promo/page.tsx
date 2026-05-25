@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: 'Promo Spesial',
   description:
     'Dapatkan penawaran eksklusif produk laboratorium, reagen, dan furniture lab dari Andis Lab. Harga spesial, stok terbatas.',
-  alternates: { canonical: 'https://andislab.com/promo' },
+  alternates: { canonical: 'https://andislabs.com/promo' },
 };
 
 // ─── Types ────────────────────────────────────────────────────────────────────

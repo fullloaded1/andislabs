@@ -3,7 +3,7 @@ import { KATEGORI_SLUGS } from '@/data/products';
 import { articles } from '@/data/articles';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://andislab.com';
+  const baseUrl = 'https://andislabs.com';
 
   // Kategori pages
   const categoryUrls = KATEGORI_SLUGS.map((slug) => ({

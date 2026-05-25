@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Artikel & Edukasi",
   description: "Kumpulan artikel, tips, dan panduan seputar alat laboratorium, bahan kimia, dan standar operasional lab dari Andis Lab.",
   alternates: {
-    canonical: "https://andislab.com/artikel",
+    canonical: "https://andislabs.com/artikel",
   },
 };
 
