@@ -43,13 +43,23 @@ const BASE_SLIDES: Slide[] = [
   },
   {
     id: 99,
-    image: "/images/pyrex100.jpg",
+    image: "/images/pyrex100.png",
     eyebrow: "Authorized Distributor • Trusted Since 1915",
     headline1: "Glassware Terbaik",
     headline2: "Pyrex® Indonesia",
     sub: "Andis Lab adalah distributor resmi Pyrex® di Indonesia untuk kebutuhan glassware laboratorium berkualitas tinggi, riset ilmiah, industri, dan pendidikan.",
     isShowcase: true,
     waMessage: "Halo Andis Lab, saya tertarik dengan produk Pyrex. Boleh minta informasi dan penawaran?",
+  },
+  {
+    id: 100,
+    image: "/images/labtech.png",
+    eyebrow: "Authorized Distributor • Daihan Labtech",
+    headline1: "General Lab",
+    headline2: "Daihan Labtech",
+    sub: "Andis Lab adalah distributor resmi Daihan Labtech di Indonesia. Oven, centrifuge, water bath, magnetic stirrer, dan instrumen laboratorium lengkap berkualitas tinggi.",
+    isShowcase: true,
+    waMessage: "Halo Andis Lab, saya tertarik dengan produk Daihan Labtech. Boleh minta informasi dan penawaran?",
   },
 ];
 
@@ -63,18 +73,18 @@ interface HeroSectionProps {
 export default function HeroSection({ promo }: HeroSectionProps) {
   const slides: Slide[] = promo
     ? [
-        {
-          id: 0,
-          image: promo.hero_image || "/images/promo-banner-bg.png",
-          eyebrow: promo.badge || "Promo Spesial",
-          headline1: promo.title.split(" ").slice(0, 2).join(" "),
-          headline2: promo.title.split(" ").slice(2).join(" ") || promo.title,
-          sub: promo.tagline,
-          isPromo: true,
-          promoHref: "/promo",
-        },
-        ...BASE_SLIDES,
-      ]
+      {
+        id: 0,
+        image: promo.hero_image || "/images/promo-banner-bg.png",
+        eyebrow: promo.badge || "Promo Spesial",
+        headline1: promo.title.split(" ").slice(0, 2).join(" "),
+        headline2: promo.title.split(" ").slice(2).join(" ") || promo.title,
+        sub: promo.tagline,
+        isPromo: true,
+        promoHref: "/promo",
+      },
+      ...BASE_SLIDES,
+    ]
     : BASE_SLIDES;
 
   const [current, setCurrent] = useState(0);
@@ -102,13 +112,15 @@ export default function HeroSection({ promo }: HeroSectionProps) {
         if (!s.isShowcase) return null;
         const active = i === current;
 
-        const isPyrex = s.id === 99;
-        const accentColor = isPyrex ? "#C0392B" : "#2563EB";
-        const accentBorder = isPyrex ? "rgba(192,57,43,0.25)" : "rgba(37,99,235,0.25)";
-        const accentBg = isPyrex ? "rgba(192,57,43,0.07)" : "rgba(37,99,235,0.07)";
-        const accentShadow = isPyrex ? "0 4px 20px rgba(192,57,43,0.28)" : "0 4px 20px rgba(37,99,235,0.28)";
-        const gradientBase = isPyrex ? "248,246,244" : "244,248,252";
-        const glowClass = isPyrex ? "bg-red-400/20" : "bg-blue-400/20";
+        const isPyrex   = s.id === 99;
+        const isLabTech = s.id === 100;
+
+        const accentColor  = isPyrex ? "#C0392B" : isLabTech ? "#0369A1" : "#2563EB";
+        const accentBorder = isPyrex ? "rgba(192,57,43,0.25)"  : isLabTech ? "rgba(3,105,161,0.25)"  : "rgba(37,99,235,0.25)";
+        const accentBg     = isPyrex ? "rgba(192,57,43,0.07)"  : isLabTech ? "rgba(3,105,161,0.07)"  : "rgba(37,99,235,0.07)";
+        const accentShadow = isPyrex ? "0 4px 20px rgba(192,57,43,0.28)" : isLabTech ? "0 4px 20px rgba(3,105,161,0.28)" : "0 4px 20px rgba(37,99,235,0.28)";
+        const gradientBase = isPyrex ? "225,238,248" : isLabTech ? "240,248,255" : "244,248,252";
+        const glowClass    = isPyrex ? "bg-red-400/20" : isLabTech ? "bg-sky-400/20" : "bg-blue-400/20";
 
         return (
           <div
@@ -127,7 +139,7 @@ export default function HeroSection({ promo }: HeroSectionProps) {
               alt={s.headline2}
               fill
               priority
-              className="object-cover object-right"
+              className="object-cover object-center"
               sizes="100vw"
               unoptimized
             />
@@ -191,16 +203,16 @@ export default function HeroSection({ promo }: HeroSectionProps) {
                     </svg>
                     Minta Penawaran Sekarang
                   </a>
-                  <a
-                    href="/general-lab"
-                    className="inline-flex items-center gap-2 font-semibold text-sm px-7 py-3.5 rounded-lg border transition-all duration-200 hover:border-blue-400 hover:text-blue-700 bg-white/60 backdrop-blur-sm"
+                  <button
+                    onClick={() => document.getElementById('katalog')?.scrollIntoView({ behavior: 'smooth' })}
+                    className="inline-flex items-center gap-2 font-semibold text-sm px-7 py-3.5 rounded-lg border transition-all duration-200 hover:border-blue-400 hover:text-blue-700 bg-white/60 backdrop-blur-sm cursor-pointer"
                     style={{ color: "#0A2540", borderColor: "rgba(10,37,64,0.2)" }}
                   >
                     Lihat Katalog
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
-                  </a>
+                  </button>
                 </div>
 
               </div>
@@ -219,9 +231,8 @@ export default function HeroSection({ promo }: HeroSectionProps) {
             key={i}
             onClick={() => setCurrent(i)}
             aria-label={`Slide ${i + 1}`}
-            className={`h-1.5 rounded-full transition-all duration-300 ${
-              i === current ? "w-6 bg-blue-600" : "w-1.5 bg-slate-300"
-            }`}
+            className={`h-1.5 rounded-full transition-all duration-300 ${i === current ? "w-6 bg-blue-600" : "w-1.5 bg-slate-300"
+              }`}
           />
         ))}
       </div>

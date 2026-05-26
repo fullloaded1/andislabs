@@ -34,8 +34,9 @@ export default function FeaturedProductsSection() {
 
         {/* Products grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {featured.map((product) => {
+          {featured.map((product, index) => {
             const waMessage = `Halo, saya tertarik dengan ${product.nama_produk} (${product.model}). Mohon info harga dan ketersediaannya.`;
+            const isFirst = index === 0;
             return (
               // Use article as card container — no nested <a> issue
               <article
@@ -54,6 +55,8 @@ export default function FeaturedProductsSection() {
                     height={180}
                     className="object-contain max-h-40 group-hover:scale-105 transition-transform duration-300 drop-shadow-sm"
                     unoptimized
+                    loading={isFirst ? "eager" : "lazy"}
+                    priority={isFirst}
                   />
                   {/* Sub-kategori badge */}
                   <div className="absolute top-3 left-3">

@@ -3,7 +3,7 @@ import { Download, FileText } from "lucide-react";
 
 export default function KatalogSection() {
   return (
-    <section className="py-24 bg-white">
+    <section id="katalog" className="py-24 bg-white">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
