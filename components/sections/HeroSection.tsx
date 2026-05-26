@@ -61,6 +61,16 @@ const BASE_SLIDES: Slide[] = [
     isShowcase: true,
     waMessage: "Halo Andis Lab, saya tertarik dengan produk Daihan Labtech. Boleh minta informasi dan penawaran?",
   },
+  {
+    id: 101,
+    image: "/images/Andislabcustom.png",
+    eyebrow: "Solusi Furnitur Lab • Andis Lab",
+    headline1: "Custom Lab",
+    headline2: "Furniture & Design",
+    sub: "Andis Lab menyediakan solusi furnitur laboratorium kustom — Island Bench, Wall Bench, Fume Hood, dan perancangan ruang laboratorium terpadu sesuai standar keamanan internasional.",
+    isShowcase: true,
+    waMessage: "Halo Andis Lab, saya tertarik dengan layanan Custom Lab Furniture. Boleh minta informasi dan konsultasi?",
+  },
 ];
 
 // ─── Component ────────────────────────────────────────────────────────────────
@@ -112,15 +122,16 @@ export default function HeroSection({ promo }: HeroSectionProps) {
         if (!s.isShowcase) return null;
         const active = i === current;
 
-        const isPyrex   = s.id === 99;
-        const isLabTech = s.id === 100;
+        const isPyrex      = s.id === 99;
+        const isLabTech    = s.id === 100;
+        const isCustomLab  = s.id === 101;
 
-        const accentColor  = isPyrex ? "#C0392B" : isLabTech ? "#0369A1" : "#2563EB";
-        const accentBorder = isPyrex ? "rgba(192,57,43,0.25)"  : isLabTech ? "rgba(3,105,161,0.25)"  : "rgba(37,99,235,0.25)";
-        const accentBg     = isPyrex ? "rgba(192,57,43,0.07)"  : isLabTech ? "rgba(3,105,161,0.07)"  : "rgba(37,99,235,0.07)";
-        const accentShadow = isPyrex ? "0 4px 20px rgba(192,57,43,0.28)" : isLabTech ? "0 4px 20px rgba(3,105,161,0.28)" : "0 4px 20px rgba(37,99,235,0.28)";
-        const gradientBase = isPyrex ? "225,238,248" : isLabTech ? "240,248,255" : "244,248,252";
-        const glowClass    = isPyrex ? "bg-red-400/20" : isLabTech ? "bg-sky-400/20" : "bg-blue-400/20";
+        const accentColor  = isPyrex ? "#C0392B" : isLabTech ? "#0369A1" : isCustomLab ? "#0D7A5F" : "#2563EB";
+        const accentBorder = isPyrex ? "rgba(192,57,43,0.25)"  : isLabTech ? "rgba(3,105,161,0.25)"  : isCustomLab ? "rgba(13,122,95,0.25)"  : "rgba(37,99,235,0.25)";
+        const accentBg     = isPyrex ? "rgba(192,57,43,0.07)"  : isLabTech ? "rgba(3,105,161,0.07)"  : isCustomLab ? "rgba(13,122,95,0.07)"  : "rgba(37,99,235,0.07)";
+        const accentShadow = isPyrex ? "0 4px 20px rgba(192,57,43,0.28)" : isLabTech ? "0 4px 20px rgba(3,105,161,0.28)" : isCustomLab ? "0 4px 20px rgba(13,122,95,0.28)" : "0 4px 20px rgba(37,99,235,0.28)";
+        const gradientBase = isPyrex ? "225,238,248" : isLabTech ? "240,248,255" : isCustomLab ? "236,247,243" : "244,248,252";
+        const glowClass    = isPyrex ? "bg-red-400/20" : isLabTech ? "bg-sky-400/20" : isCustomLab ? "bg-teal-400/20" : "bg-blue-400/20";
 
         return (
           <div
