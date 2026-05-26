@@ -10,6 +10,8 @@ import CTASection from "@/components/sections/CTASection";
 import FAQSection from "@/components/sections/FAQSection";
 import BrandPartnersSection from "@/components/sections/BrandPartnersSection";
 import ArticlesSection from "@/components/sections/ArticlesSection";
+import KatalogSection from "@/components/sections/KatalogSection";
+
 import {
   queryNotionDatabase,
   getPlainText,
@@ -35,9 +37,9 @@ async function getPromoForHero(): Promise<PromoSlideData | null> {
     if (!isPromoActive(page.properties["Periode Aktif"])) return null;
 
     return {
-      title:      getPlainText(page.properties["Judul"])      || "Promo Spesial",
-      tagline:    getPlainText(page.properties["Tagline"])    || "",
-      badge:      getPlainText(page.properties["Badge"])      || "Hot Promo",
+      title: getPlainText(page.properties["Judul"]) || "Promo Spesial",
+      tagline: getPlainText(page.properties["Tagline"]) || "",
+      badge: getPlainText(page.properties["Badge"]) || "Hot Promo",
       hero_image: getPlainText(page.properties["Hero Image"]) || "",
     };
   } catch {
@@ -52,12 +54,14 @@ export default async function HomePage() {
     <>
       <HeroSection promo={promo} />
       <BrandPartnersSection />
+
       <StatsSection />
       <AboutSection />
       <WhyUsSection />
       <ServicesSection />
       <CategoriesSection />
       <FeaturedProductsSection />
+      <KatalogSection />
       <TestimonialsSection />
       <ArticlesSection />
       <FAQSection />

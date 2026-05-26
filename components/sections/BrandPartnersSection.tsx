@@ -1,30 +1,57 @@
-import Image from "next/image";
-
 const brands = [
-  { name: "Merck", logo: "https://andislab.com/wp-content/uploads/2026/02/merck.png" }, // I'll just use text fallbacks if no image
-  { name: "IWAKI", logo: "https://andislab.com/wp-content/uploads/2026/02/iwaki.png" },
-  { name: "DLAB", logo: "https://andislab.com/wp-content/uploads/2026/02/dlab.png" },
-  { name: "Thermo Fisher", logo: "https://andislab.com/wp-content/uploads/2026/02/thermo.png" },
-  { name: "Hanna Instruments", logo: "https://andislab.com/wp-content/uploads/2026/02/hanna.png" },
-  { name: "Eppendorf", logo: "https://andislab.com/wp-content/uploads/2026/02/eppendorf.png" },
+  {
+    name: "Lovibond",
+    logo: "/images/logos/lovibond-logo.png",
+    multiply: false,
+  },
+  {
+    name: "Pyrex",
+    logo: "/images/logos/pyrexlogo.png",
+    multiply: true,
+  },
+  {
+    name: "Daihan Labtech",
+    logo: "/images/logos/daihanlabtechlogo.png",
+    multiply: false,
+  },
 ];
 
 export default function BrandPartnersSection() {
   return (
-    <section className="py-12 bg-white border-y border-slate-100 overflow-hidden">
+    <section className="py-12 bg-white border-y border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <p className="text-center text-sm font-semibold text-slate-400 mb-8 uppercase tracking-widest">
-          Dipercaya oleh Brand Global Terkemuka
+        <p className="text-center text-sm font-semibold text-slate-400 mb-10 uppercase tracking-widest">
+          Authorized Distributor Resmi
         </p>
-        
-        {/* Simple marquee effect with flex */}
-        <div className="flex flex-wrap justify-center items-center gap-10 md:gap-16 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
-          <div className="text-2xl font-black text-slate-800 tracking-tighter">MERCK</div>
-          <div className="text-2xl font-black text-red-700 tracking-wider">IWAKI</div>
-          <div className="text-2xl font-bold text-blue-700">DLAB</div>
-          <div className="text-2xl font-bold text-slate-800">ThermoFisher</div>
-          <div className="text-2xl font-black text-orange-600">HANNA</div>
-          <div className="text-2xl font-bold text-blue-600">eppendorf</div>
+
+        <div className="flex flex-wrap justify-center items-center gap-16 md:gap-24">
+          {brands.map((b) => (
+            <div
+              key={b.name}
+              className="opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300"
+              style={{
+                width: 160,
+                height: 44,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <img
+                src={b.logo}
+                alt={b.name}
+                style={{
+                  maxWidth: "100%",
+                  maxHeight: "100%",
+                  width: "auto",
+                  height: "auto",
+                  objectFit: "contain",
+                  mixBlendMode: b.multiply ? "multiply" : "normal",
+                  display: "block",
+                }}
+              />
+            </div>
+          ))}
         </div>
       </div>
     </section>
