@@ -13,7 +13,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Andis Lab — Mitra Terpercaya Laboratorium Indonesia",
+    default: "Andis Lab | Mitra Terpercaya Laboratorium Indonesia",
     template: "%s | Andis Lab",
   },
   description:
@@ -35,13 +35,13 @@ export const metadata: Metadata = {
     locale: "id_ID",
     url: "https://andislabs.com",
     siteName: "Andis Lab",
-    title: "Andis Lab — Mitra Terpercaya Laboratorium Indonesia",
+    title: "Andis Lab | Mitra Terpercaya Laboratorium Indonesia",
     description:
       "Distributor resmi peralatan laboratorium, furnitur lab custom, reagent, dan glassware terpercaya di Indonesia.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Andis Lab — Mitra Terpercaya Laboratorium Indonesia",
+    title: "Andis Lab | Mitra Terpercaya Laboratorium Indonesia",
     description:
       "Distributor resmi peralatan laboratorium, furnitur lab custom, reagent, dan glassware terpercaya di Indonesia.",
   },

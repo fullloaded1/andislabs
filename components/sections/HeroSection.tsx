@@ -67,7 +67,7 @@ const BASE_SLIDES: Slide[] = [
     eyebrow: "Solusi Furnitur Lab • Andis Lab",
     headline1: "Custom Lab",
     headline2: "Furniture & Design",
-    sub: "Andis Lab menyediakan solusi furnitur laboratorium kustom — Island Bench, Wall Bench, Fume Hood, dan perancangan ruang laboratorium terpadu sesuai standar keamanan internasional.",
+    sub: "Andis Lab menyediakan solusi furnitur laboratorium kustom meliputi Island Bench, Wall Bench, Fume Hood, serta perancangan ruang laboratorium terpadu sesuai standar keamanan internasional.",
     isShowcase: true,
     waMessage: "Halo Andis Lab, saya tertarik dengan layanan Custom Lab Furniture. Boleh minta informasi dan konsultasi?",
   },

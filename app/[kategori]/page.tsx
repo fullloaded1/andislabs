@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!cat) return {};
 
   return {
-    title: `${cat.label} — Katalog Andis Lab`,
+    title: `${cat.label} | Katalog Andis Lab`,
     description: cat.deskripsi,
     alternates: {
       canonical: `https://andislabs.com/${kategori}`,

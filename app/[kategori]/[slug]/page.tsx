@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!product) return {};
 
   return {
-    title: `${product.nama_produk} — Andis Lab`,
+    title: `${product.nama_produk} | Andis Lab`,
     description: product.deskripsi_singkat,
   };
 }
