@@ -12,6 +12,8 @@ export const SITE_EMAIL = "info@andislab.com";
 export const SITE_PHONE = "0821-2552-3466";
 export const SITE_PHONE_RAW = "+6282125523466";
 
+export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID || "";
+
 /** Build a wa.me link with pre-filled message */
 export function waLink(message?: string): string {
   const msg = message ?? WA_MESSAGE_DEFAULT;

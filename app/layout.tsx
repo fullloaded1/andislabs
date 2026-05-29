@@ -6,7 +6,8 @@ import Footer from "@/components/layout/Footer";
 import FloatingWhatsApp from "@/components/ui/FloatingWhatsApp";
 import SkipLink from "@/components/ui/SkipLink";
 import { ToastProvider } from "@/components/ui/Toast";
-import { SITE_NAME, SITE_URL, SITE_PHONE_RAW } from "@/lib/constants";
+import { SITE_NAME, SITE_URL, SITE_PHONE_RAW, GA_MEASUREMENT_ID } from "@/lib/constants";
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 const inter = Inter({
   subsets: ["latin"],
@@ -103,6 +104,7 @@ export default function RootLayout({
           <Footer />
           <FloatingWhatsApp />
         </ToastProvider>
+        {GA_MEASUREMENT_ID && <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />}
       </body>
     </html>
   );
