@@ -55,7 +55,7 @@ const comingSoon = [
   {
     name: "Merck",
     category: "Reagen",
-    logo: "/images/logos/images.png",
+    logo: "/images/logos/Logo_Merck_KGaA_2015.svg.png",
   },
 ];
 

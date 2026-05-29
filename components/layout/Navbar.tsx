@@ -39,7 +39,7 @@ const brands = [
     name: "Merck",
     slug: "merck",
     tagline: "Reagent & Chemicals",
-    logo: "/images/logos/images.png",
+    logo: "/images/logos/Logo_Merck_KGaA_2015.svg.png",
     href: "/reagent-consumable",
     color: "text-indigo-600",
     bg: "group-hover/brand:bg-indigo-50",

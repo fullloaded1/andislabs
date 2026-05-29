@@ -61,7 +61,7 @@ const logos = [
   { src: "/images/logos/vicmalab.png",     alt: "Vicma Lab" },
   { src: "/images/logos/Logo_Unjani.png",  alt: "Unjani" },
   { src: "/images/logos/images.jpg",       alt: "Mitra" },
-  { src: "/images/logos/images.png",       alt: "Mitra" },
+  { src: "/images/logos/Logo_Merck_KGaA_2015.svg.png",       alt: "Mitra" },
   { src: "/images/logos/sego lab.jpg",     alt: "Sego Lab" },
 ];
 
