@@ -4,6 +4,9 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import FloatingWhatsApp from "@/components/ui/FloatingWhatsApp";
+import SkipLink from "@/components/ui/SkipLink";
+import { ToastProvider } from "@/components/ui/Toast";
+import { SITE_NAME, SITE_URL, SITE_PHONE_RAW } from "@/lib/constants";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -13,8 +16,8 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Andis Lab | Mitra Terpercaya Laboratorium Indonesia",
-    template: "%s | Andis Lab",
+    default: `${SITE_NAME} | Mitra Terpercaya Laboratorium Indonesia`,
+    template: `%s | ${SITE_NAME}`,
   },
   description:
     "Andis Lab adalah distributor resmi peralatan laboratorium, furnitur lab custom, reagent, dan glassware terpercaya di Indonesia. Konsultasi gratis, harga kompetitif, layanan purna jual.",
@@ -27,21 +30,21 @@ export const metadata: Metadata = {
     "andis lab",
     "andislab",
   ],
-  authors: [{ name: "Andis Lab", url: "https://andislabs.com" }],
-  creator: "Andis Lab",
-  metadataBase: new URL("https://andislabs.com"),
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+  metadataBase: new URL(SITE_URL),
   openGraph: {
     type: "website",
     locale: "id_ID",
-    url: "https://andislabs.com",
-    siteName: "Andis Lab",
-    title: "Andis Lab | Mitra Terpercaya Laboratorium Indonesia",
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    title: `${SITE_NAME} | Mitra Terpercaya Laboratorium Indonesia`,
     description:
       "Distributor resmi peralatan laboratorium, furnitur lab custom, reagent, dan glassware terpercaya di Indonesia.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Andis Lab | Mitra Terpercaya Laboratorium Indonesia",
+    title: `${SITE_NAME} | Mitra Terpercaya Laboratorium Indonesia`,
     description:
       "Distributor resmi peralatan laboratorium, furnitur lab custom, reagent, dan glassware terpercaya di Indonesia.",
   },
@@ -58,7 +61,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   alternates: {
-    canonical: "https://andislabs.com",
+    canonical: SITE_URL,
   },
 };
 
@@ -70,11 +73,11 @@ export default function RootLayout({
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "name": "Andis Lab",
-    "image": "https://andislabs.com/logo.png",
+    "name": SITE_NAME,
+    "image": `${SITE_URL}/logo.png`,
     "description": "Distributor resmi peralatan laboratorium, furnitur lab custom, reagent, dan glassware terpercaya di Indonesia.",
-    "url": "https://andislabs.com",
-    "telephone": "+6282125523466",
+    "url": SITE_URL,
+    "telephone": SITE_PHONE_RAW,
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Jakarta",
@@ -91,10 +94,15 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen flex flex-col">
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        <FloatingWhatsApp />
+        <SkipLink />
+        <ToastProvider>
+          <Navbar />
+          <main id="main-content" className="flex-1">
+            {children}
+          </main>
+          <Footer />
+          <FloatingWhatsApp />
+        </ToastProvider>
       </body>
     </html>
   );

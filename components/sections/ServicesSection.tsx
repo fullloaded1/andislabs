@@ -1,23 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-
-/* ── Scroll-reveal hook ─────────────────────────────────────── */
-function useReveal(threshold = 0.12) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } },
-      { threshold }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, [threshold]);
-  return { ref, visible };
-}
+import { useReveal } from "@/hooks/useReveal";
 
 /* ── Color tokens — matches WhyUsSection / site palette ── */
 const iconBg: Record<string, string> = {
@@ -145,7 +128,7 @@ export default function ServicesSection() {
               style={{ animationDelay: gridReveal.visible ? `${idx * 100}ms` : "0ms" }}
             >
               {/* Hexagon icon — same style as WhyUsSection */}
-              <div className="flex-shrink-0">
+              <div className="flex-shrink-0" aria-hidden="true">
                 <div
                   className={`w-16 h-[72px] flex items-center justify-center ${iconBg[s.color]}`}
                   style={{ clipPath: "polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%)" }}
@@ -167,7 +150,7 @@ export default function ServicesSection() {
                 <ul className="space-y-2 mb-5">
                   {s.bullets.map((b) => (
                     <li key={b} className="flex items-center gap-2.5 text-slate-600 text-sm">
-                      <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${dotColor[s.color]}`} />
+                      <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${dotColor[s.color]}`} aria-hidden="true" />
                       {b}
                     </li>
                   ))}
@@ -185,6 +168,7 @@ export default function ServicesSection() {
                     <svg
                       className="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform duration-200"
                       fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"
+                      aria-hidden="true"
                     >
                       <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                     </svg>

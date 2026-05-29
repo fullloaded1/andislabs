@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Metadata } from "next";
 import { supabase } from "@/lib/supabase";
 import ReportView from "@/components/ui/ReportView";
+import { waLink } from "@/lib/constants";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -130,7 +131,7 @@ export default async function ArticleDetailPage({ params }: Props) {
               alt={article.title}
               fill
               className="object-cover"
-              unoptimized
+              loading="eager"
             />
           </div>
         </header>
@@ -153,7 +154,7 @@ export default async function ArticleDetailPage({ params }: Props) {
             Tim ahli kami siap membantu Anda memilih instrumen dan bahan kimia yang tepat untuk lab Anda secara gratis.
           </p>
           <a
-            href="https://wa.me/6282125523466"
+            href={waLink("Halo Andis Lab, saya ingin konsultasi lebih lanjut.")}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-teal-500 hover:bg-teal-400 text-white font-bold py-3.5 px-8 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-teal-500/25"

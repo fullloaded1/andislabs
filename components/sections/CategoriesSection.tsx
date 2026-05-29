@@ -97,15 +97,16 @@ export default function CategoriesSection() {
                 alt={cat.label}
                 fill
                 className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-                unoptimized
+                loading="lazy"
               />
 
               {/* Gradient overlay on top of photo */}
-              <div className={`absolute inset-0 bg-gradient-to-t ${cat.gradient}`} />
+              <div className={`absolute inset-0 bg-gradient-to-t ${cat.gradient}`} aria-hidden="true" />
 
               {/* Subtle dot overlay */}
               <div
                 className="absolute inset-0 opacity-[0.05]"
+                aria-hidden="true"
                 style={{
                   backgroundImage: `radial-gradient(circle, white 1.5px, transparent 1.5px)`,
                   backgroundSize: "28px 28px",
@@ -113,7 +114,7 @@ export default function CategoriesSection() {
               />
 
               {/* Large icon — top right decorative */}
-              <div className="absolute top-6 right-6 opacity-20 group-hover:opacity-30 transition-opacity duration-300">
+              <div className="absolute top-6 right-6 opacity-20 group-hover:opacity-30 transition-opacity duration-300" aria-hidden="true">
                 <div
                   className="w-28 h-32 bg-white/30 flex items-center justify-center text-white"
                   style={{ clipPath: "polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%)" }}
@@ -128,6 +129,7 @@ export default function CategoriesSection() {
                 <div
                   className="w-12 h-[54px] bg-white/20 border border-white/30 text-white flex items-center justify-center mb-5"
                   style={{ clipPath: "polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%)" }}
+                  aria-hidden="true"
                 >
                   <div className="scale-75">{cat.icon}</div>
                 </div>
@@ -141,6 +143,7 @@ export default function CategoriesSection() {
                   <svg
                     className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1"
                     fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    aria-hidden="true"
                   >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>

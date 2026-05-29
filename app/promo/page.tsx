@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
 import { supabase } from '@/lib/supabase';
+import { waLink } from '@/lib/constants';
 import {
   queryNotionDatabase,
   getPlainText,
@@ -148,8 +149,7 @@ const CATEGORY_COLOR: Record<string, { pill: string; text: string; dot: string }
 const getColor = (cat: string) =>
   CATEGORY_COLOR[cat] ?? { pill: 'bg-slate-100 text-slate-600', text: 'text-slate-600', dot: 'bg-slate-400' };
 
-const WA_NUMBER  = '6282125523466';
-const WA_MESSAGE = 'Halo Andis Lab, saya tertarik dengan promo yang sedang berlangsung. Boleh minta info lebih lanjut?';
+
 
 // ─── Placeholder SVG jika tidak ada gambar ────────────────────────────────────
 
@@ -203,7 +203,7 @@ export default async function PromoPage() {
                   </svg>
                 </a>
                 <a
-                  href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(WA_MESSAGE)}`}
+                  href={waLink('Halo Andis Lab, saya tertarik dengan promo yang sedang berlangsung. Boleh minta info lebih lanjut?')}
                   target="_blank" rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 border border-slate-200 hover:border-slate-300 bg-white text-slate-700 font-semibold text-sm px-7 py-3.5 rounded-xl transition-colors"
                 >
@@ -229,7 +229,7 @@ export default async function PromoPage() {
                   fill
                   className="object-cover"
                   priority
-                  unoptimized
+                        loading="lazy"
                 />
               ) : (
                 /* Ilustrasi default jika belum ada gambar di Notion */
@@ -293,7 +293,7 @@ export default async function PromoPage() {
                         alt={product.name}
                         fill
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
-                        unoptimized
+                              loading="lazy"
                       />
                     ) : (
                       <ProductImagePlaceholder category={product.category} />

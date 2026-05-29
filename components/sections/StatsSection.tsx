@@ -1,4 +1,4 @@
-// Stats Counter Section — light gray strip
+// Stats Counter Section — light gray strip, responsive dividers
 
 const stats = [
   {
@@ -41,19 +41,20 @@ const stats = [
 
 export default function StatsSection() {
   return (
-    <section className="bg-slate-50 py-14">
+    <section className="bg-slate-50 py-14" aria-label="Statistik Andis Lab">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-0 divide-x divide-slate-200">
+        {/* On mobile: 2 cols with gap; on desktop: 4 cols with dividers */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-0 lg:divide-x lg:divide-slate-200">
           {stats.map((s) => (
             <div
               key={s.label}
-              className="flex flex-col sm:flex-row items-center sm:items-start gap-4 px-8 py-4 text-center sm:text-left"
+              className="flex flex-col sm:flex-row items-center sm:items-start gap-4 px-4 lg:px-8 py-4 text-center sm:text-left"
             >
-              <div className="flex-shrink-0 w-14 h-14 bg-teal-50 text-teal-600 rounded-2xl flex items-center justify-center">
+              <div className="flex-shrink-0 w-14 h-14 bg-teal-50 text-teal-600 rounded-2xl flex items-center justify-center" aria-hidden="true">
                 {s.icon}
               </div>
               <div>
-                <p className="text-4xl font-black text-slate-900 leading-none mb-1">{s.value}</p>
+                <p className="text-3xl sm:text-4xl font-black text-slate-900 leading-none mb-1">{s.value}</p>
                 <p className="text-slate-500 text-sm font-medium">{s.label}</p>
               </div>
             </div>

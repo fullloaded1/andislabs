@@ -2,10 +2,8 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { WA_NUMBER, WA_MESSAGE_DEFAULT, waLink } from "@/lib/constants";
 
-const WA_NUMBER = "6282125523466";
-const WA_MESSAGE = "Halo Andis Lab, saya ingin konsultasi mengenai peralatan laboratorium.";
 const DURATION = 6000;
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -113,11 +111,16 @@ export default function HeroSection({ promo }: HeroSectionProps) {
   return (
     <section
       className="relative w-full overflow-hidden group"
-      style={{ marginTop: 68, height: "calc(100vh - 68px)", minHeight: 520 }}
+      style={{ marginTop: 68, height: "calc(100dvh - 68px)", minHeight: 480 }}
+      aria-roledescription="carousel"
+      aria-label="Banner produk unggulan Andis Lab"
     >
+      {/* Live region for screen readers */}
+      <div className="sr-only" aria-live="polite" aria-atomic="true">
+        Slide {current + 1} dari {slides.length}: {slide.headline1} {slide.headline2}
+      </div>
 
-
-      {/* ── Showcase Slides (Lovibond & Pyrex) ── */}
+      {/* ── Showcase Slides ── */}
       {slides.map((s, i) => {
         if (!s.isShowcase) return null;
         const active = i === current;
@@ -127,8 +130,6 @@ export default function HeroSection({ promo }: HeroSectionProps) {
         const isCustomLab  = s.id === 101;
 
         const accentColor  = isPyrex ? "#C0392B" : isLabTech ? "#0369A1" : isCustomLab ? "#0D7A5F" : "#2563EB";
-        const accentBorder = isPyrex ? "rgba(192,57,43,0.25)"  : isLabTech ? "rgba(3,105,161,0.25)"  : isCustomLab ? "rgba(13,122,95,0.25)"  : "rgba(37,99,235,0.25)";
-        const accentBg     = isPyrex ? "rgba(192,57,43,0.07)"  : isLabTech ? "rgba(3,105,161,0.07)"  : isCustomLab ? "rgba(13,122,95,0.07)"  : "rgba(37,99,235,0.07)";
         const accentShadow = isPyrex ? "0 4px 20px rgba(192,57,43,0.28)" : isLabTech ? "0 4px 20px rgba(3,105,161,0.28)" : isCustomLab ? "0 4px 20px rgba(13,122,95,0.28)" : "0 4px 20px rgba(37,99,235,0.28)";
         const gradientBase = isPyrex ? "225,238,248" : isLabTech ? "240,248,255" : isCustomLab ? "236,247,243" : "244,248,252";
         const glowClass    = isPyrex ? "bg-red-400/20" : isLabTech ? "bg-sky-400/20" : isCustomLab ? "bg-teal-400/20" : "bg-blue-400/20";
@@ -137,6 +138,10 @@ export default function HeroSection({ promo }: HeroSectionProps) {
           <div
             key={s.id}
             className="absolute inset-0"
+            role="group"
+            aria-roledescription="slide"
+            aria-label={`Slide ${i + 1} dari ${slides.length}`}
+            aria-hidden={!active}
             style={{
               zIndex: active ? 10 : 0,
               opacity: active ? 1 : 0,
@@ -147,24 +152,24 @@ export default function HeroSection({ promo }: HeroSectionProps) {
             {/* Background */}
             <Image
               src={s.image}
-              alt={s.headline2}
+              alt=""
               fill
-              priority
+              priority={i === 0}
               className="object-cover object-center"
               sizes="100vw"
-              unoptimized
             />
 
             {/* Gradient overlay */}
             <div
               className="absolute inset-0"
+              aria-hidden="true"
               style={{
                 background: `linear-gradient(to right, rgba(${gradientBase},0.97) 0%, rgba(${gradientBase},0.85) 35%, rgba(${gradientBase},0.40) 60%, rgba(${gradientBase},0) 100%)`,
               }}
             />
 
             {/* Glow subtle */}
-            <div className={`absolute top-[-120px] left-[-120px] w-[420px] h-[420px] rounded-full ${glowClass} blur-3xl pointer-events-none`} />
+            <div className={`absolute top-[-120px] left-[-120px] w-[420px] h-[420px] rounded-full ${glowClass} blur-3xl pointer-events-none`} aria-hidden="true" />
 
             {/* Content */}
             <div className="relative z-20 h-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 flex items-center">
@@ -172,15 +177,15 @@ export default function HeroSection({ promo }: HeroSectionProps) {
 
                 {/* Eyebrow */}
                 <p
-                  className="text-[11px] font-bold uppercase tracking-[0.28em] mb-5"
+                  className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.28em] mb-4 sm:mb-5"
                   style={{ color: accentColor, animation: active ? "heroTextUp 0.65s ease 0.1s both" : undefined }}
                 >
                   {s.eyebrow}
                 </p>
 
-                {/* Headline */}
+                {/* Headline — responsive sizing */}
                 <h1
-                  className="text-5xl md:text-6xl font-black leading-[1.08] tracking-tight mb-5"
+                  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-[1.08] tracking-tight mb-4 sm:mb-5"
                   style={{ color: "#0A2540", animation: active ? "heroTextUp 0.7s ease 0.2s both" : undefined }}
                 >
                   {s.headline1}
@@ -188,9 +193,9 @@ export default function HeroSection({ promo }: HeroSectionProps) {
                   <span style={{ color: accentColor }}>{s.headline2}</span>
                 </h1>
 
-                {/* Sub */}
+                {/* Sub — responsive */}
                 <p
-                  className="text-base leading-relaxed mb-8 max-w-md"
+                  className="text-sm sm:text-base leading-relaxed mb-6 sm:mb-8 max-w-md"
                   style={{ color: "#4B6B8A", animation: active ? "heroTextUp 0.7s ease 0.32s both" : undefined }}
                 >
                   {s.sub}
@@ -199,14 +204,14 @@ export default function HeroSection({ promo }: HeroSectionProps) {
 
                 {/* CTAs */}
                 <div
-                  className="flex flex-wrap gap-4"
+                  className="flex flex-wrap gap-3 sm:gap-4"
                   style={{ animation: active ? "heroTextUp 0.7s ease 0.44s both" : undefined }}
                 >
                   <a
-                    href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(s.waMessage || WA_MESSAGE)}`}
+                    href={waLink(s.waMessage || WA_MESSAGE_DEFAULT)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2.5 text-white font-bold text-sm px-7 py-3.5 rounded-lg transition-all duration-200 hover:opacity-90 shadow-lg"
+                    className="inline-flex items-center gap-2.5 text-white font-bold text-xs sm:text-sm px-5 sm:px-7 py-3 sm:py-3.5 rounded-lg transition-all duration-200 hover:opacity-90 shadow-lg"
                     style={{ background: accentColor, boxShadow: accentShadow }}
                   >
                     <svg className="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
@@ -216,7 +221,7 @@ export default function HeroSection({ promo }: HeroSectionProps) {
                   </a>
                   <button
                     onClick={() => document.getElementById('katalog')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="inline-flex items-center gap-2 font-semibold text-sm px-7 py-3.5 rounded-lg border transition-all duration-200 hover:border-blue-400 hover:text-blue-700 bg-white/60 backdrop-blur-sm cursor-pointer"
+                    className="inline-flex items-center gap-2 font-semibold text-xs sm:text-sm px-5 sm:px-7 py-3 sm:py-3.5 rounded-lg border transition-all duration-200 hover:border-blue-400 hover:text-blue-700 bg-white/60 backdrop-blur-sm cursor-pointer"
                     style={{ color: "#0A2540", borderColor: "rgba(10,37,64,0.2)" }}
                   >
                     Lihat Katalog
@@ -233,17 +238,32 @@ export default function HeroSection({ promo }: HeroSectionProps) {
       })}
 
 
+      {/* ── Progress bar ── */}
+      <div className="absolute bottom-14 sm:bottom-16 left-1/2 -translate-x-1/2 z-20 w-32 h-0.5 bg-slate-200/50 rounded-full overflow-hidden">
+        <div
+          className="h-full bg-blue-600 rounded-full"
+          style={{
+            animation: `progressBar ${DURATION}ms linear forwards`,
+          }}
+          key={current}
+        />
+      </div>
 
-
-      {/* ── Dot indicators ── */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+      {/* ── Dot indicators — larger touch targets ── */}
+      <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2" role="tablist" aria-label="Slide indicators">
         {slides.map((_, i) => (
           <button
             key={i}
             onClick={() => setCurrent(i)}
-            aria-label={`Slide ${i + 1}`}
-            className={`h-1.5 rounded-full transition-all duration-300 ${i === current ? "w-6 bg-blue-600" : "w-1.5 bg-slate-300"
-              }`}
+            role="tab"
+            aria-selected={i === current}
+            aria-label={`Ke slide ${i + 1}`}
+            className={`
+              h-2.5 rounded-full transition-all duration-300
+              min-w-[10px] p-0
+              ${i === current ? "w-8 bg-blue-600" : "w-2.5 bg-slate-300 hover:bg-slate-400"}
+            `}
+            style={{ touchAction: "manipulation" }}
           />
         ))}
       </div>

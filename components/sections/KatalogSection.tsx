@@ -2,6 +2,7 @@
 
 import { Download, FileText, Clock, ArrowRight } from "lucide-react";
 import { useState } from "react";
+import { waLink } from "@/lib/constants";
 
 const brands = [
   {
@@ -13,8 +14,9 @@ const brands = [
       "Solusi lengkap untuk analisis kualitas air, mencakup fotometer, colorimeter, turbidimeter, dan kit pengujian presisi untuk laboratorium maupun lapangan.",
     logo: "/images/logos/lovibond-logo.png",
     accent: "blue" as const,
-    href: "#",
-    ctaLabel: "Download Katalog Lovibond",
+    href: waLink("Halo Andis Lab, saya tertarik dengan produk Lovibond. Boleh saya melihat katalog terbarunya?"),
+    ctaLabel: "Lihat Katalog Lovibond",
+    isExternal: true,
   },
   {
     id: "labtech",
@@ -27,6 +29,7 @@ const brands = [
     accent: "teal" as const,
     href: "/katalog-pdf",
     ctaLabel: "Lihat Katalog Labtech",
+    isExternal: false,
   },
   {
     id: "custom",
@@ -38,8 +41,8 @@ const brands = [
     logo: "/logo.png",
     accent: "slate" as const,
     href: "/Andislabkatalog.pdf",
-    ctaLabel: "Download Portofolio Custom Lab",
-    isDownload: true,
+    ctaLabel: "Lihat Portofolio Custom Lab",
+    isExternal: true,
   },
 ];
 
@@ -129,18 +132,19 @@ export default function KatalogSection() {
                 />
 
                 {/* Logo area */}
-                <div className="flex items-center justify-center px-6 py-7 bg-slate-50/70 border-b border-slate-100/80">
+                <div className="flex items-center justify-center h-24 px-6 bg-slate-50/70 border-b border-slate-100/80">
                   <img
                     src={brand.logo}
                     alt={brand.title}
                     className="transition-all duration-300"
                     style={{
-                      height: brand.id === "custom" ? 38 : 34,
+                      height: brand.id === "custom" ? 52 : 34,
                       width: "auto",
                       objectFit: "contain",
                       filter: isHovered ? "grayscale(0%)" : "grayscale(100%)",
-                      opacity: isHovered ? 1 : 0.55,
+                      opacity: isHovered ? 1 : 0.65,
                       mixBlendMode: "multiply",
+                      transform: brand.id === "custom" ? "scale(1.6)" : "none",
                     }}
                   />
                 </div>
@@ -170,16 +174,12 @@ export default function KatalogSection() {
                   {/* CTA */}
                   <a
                     href={brand.href}
-                    {...(brand.isDownload
-                      ? { download: true, target: "_blank", rel: "noopener noreferrer" }
+                    {...(brand.isExternal
+                      ? { target: "_blank", rel: "noopener noreferrer" }
                       : {})}
                     className={`inline-flex items-center justify-center gap-2 w-full text-white text-sm font-semibold px-5 py-3 rounded-xl transition-all duration-200 ${colors.btn}`}
                   >
-                    {brand.isDownload ? (
-                      <Download className="w-4 h-4" />
-                    ) : (
-                      <ArrowRight className="w-4 h-4" />
-                    )}
+                    <ArrowRight className="w-4 h-4" />
                     {brand.ctaLabel}
                   </a>
                 </div>

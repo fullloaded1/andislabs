@@ -48,7 +48,7 @@ export default async function ArticlesSection() {
                   alt={article.title}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  unoptimized
+                  loading="lazy"
                 />
                 <div className="absolute top-4 left-4">
                   <span className="bg-white/90 backdrop-blur-sm text-teal-700 text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full shadow-sm">

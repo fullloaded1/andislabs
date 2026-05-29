@@ -8,6 +8,7 @@ import {
 } from "@/data/products";
 import { getKategoriBySlug, categories } from "@/data/categories";
 import ProductCard from "@/components/ui/ProductCard";
+import { waLink } from "@/lib/constants";
 
 interface PageProps {
   params: Promise<{ kategori: string }>;
@@ -136,7 +137,7 @@ export default async function KategoriPage({ params }: PageProps) {
                   Tim kami siap bantu pilih produk yang tepat.
                 </p>
                 <a
-                  href="https://wa.me/6282125523466"
+                  href={waLink("Halo Andis Lab, saya butuh bantuan memilih produk lab yang tepat.")}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 w-full bg-[#25D366] hover:bg-[#20b858] text-white text-xs font-bold py-2.5 rounded-xl transition-colors"

@@ -1,8 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import Image from "next/image";
 import { supabase } from "@/lib/supabase";
+import { useReveal } from "@/hooks/useReveal";
+import { useToast } from "@/components/ui/Toast";
 
 /* ── Testimonial data ───────────────────────────────────────── */
 const testimonials = [
@@ -64,7 +66,6 @@ const logos = [
 ];
 
 /* duplicate for seamless loop */
-const testiTrack = [...testimonials, ...testimonials];
 const logoTrack  = [...logos, ...logos];
 
 /* ── Avatar color map ──────────────────────────────────────── */
@@ -74,23 +75,6 @@ const avatarStyle: Record<string, { bg: string; ring: string }> = {
   indigo: { bg: "from-indigo-400 to-indigo-600", ring: "ring-indigo-200" },
 };
 
-/* ── Scroll-reveal hook ─────────────────────────────────────── */
-function useReveal(threshold = 0.15) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setVisible(true); obs.disconnect(); } },
-      { threshold }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, [threshold]);
-  return { ref, visible };
-}
-
 /* ══════════════════════════════════════════════════════════════
    Component
 ══════════════════════════════════════════════════════════════ */
@@ -98,11 +82,13 @@ export default function TestimonialsSection() {
   const headerReveal = useReveal(0.1);
   const testiReveal  = useReveal(0.05);
   const stripReveal  = useReveal(0.1);
+  const { toast } = useToast();
 
   const [dbTestis, setDbTestis] = useState(testimonials);
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({ name: '', title: '', text: '', rating: 5 });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const modalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const fetchTestis = async () => {
@@ -119,7 +105,42 @@ export default function TestimonialsSection() {
     fetchTestis();
   }, []);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  // Focus trap for modal
+  useEffect(() => {
+    if (!showForm) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setShowForm(false);
+        return;
+      }
+      if (e.key !== "Tab" || !modalRef.current) return;
+      const focusable = modalRef.current.querySelectorAll<HTMLElement>(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    document.body.style.overflow = "hidden";
+    // Focus the first input
+    setTimeout(() => {
+      const firstInput = modalRef.current?.querySelector<HTMLElement>("input");
+      firstInput?.focus();
+    }, 100);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "";
+    };
+  }, [showForm]);
+
+  const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     const color = ['teal', 'blue', 'indigo'][Math.floor(Math.random()*3)];
@@ -127,18 +148,18 @@ export default function TestimonialsSection() {
       { name: formData.name, title: formData.title, text: formData.text, rating: formData.rating, color }
     ]);
     if (!error) {
-      alert("Testimoni berhasil dikirim!");
+      toast("Testimoni berhasil dikirim! Terima kasih atas feedback Anda. 🎉", "success");
       setShowForm(false);
       setFormData({ name: '', title: '', text: '', rating: 5 });
       const { data } = await supabase.from('testimonials').select('*').order('created_at', { ascending: false });
       if (data) {
-        setDbTestis(data.map(t => ({...t, avatar: t.name.split(' ').map((n: string) => n[0]).join('').substring(0, 2).toUpperCase()})));
+        setDbTestis(data.map(t => ({...t, avatar: t.name.split(' ').map((n: string) => n[0]).join('').substring(0, 2).toUpperCase(), color: t.color || 'teal'})));
       }
     } else {
-      alert("Gagal menyimpan testimoni. Pastikan tabel testimonials sudah dibuat di Supabase.");
+      toast("Gagal menyimpan testimoni. Silakan coba lagi nanti.", "error");
     }
     setIsSubmitting(false);
-  };
+  }, [formData, toast]);
 
   return (
     <section className="py-24 md:py-32 bg-white overflow-hidden">
@@ -171,31 +192,37 @@ export default function TestimonialsSection() {
         </div>
       </div>
 
-      {/* ══ Form Modal ══════════════════════════════════════════ */}
+      {/* ══ Form Modal — with focus trap ══════════════════════ */}
       {showForm && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm">
-          <div className="bg-white rounded-2xl p-6 w-full max-w-md shadow-2xl">
-            <h3 className="text-xl font-bold text-slate-900 mb-4">Tulis Testimoni</h3>
-            <form onSubmit={handleSubmit} className="space-y-4">
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="testimonial-form-title"
+          onClick={(e) => { if (e.target === e.currentTarget) setShowForm(false); }}
+        >
+          <div ref={modalRef} className="bg-white rounded-2xl p-6 w-full max-w-md shadow-2xl animate-fade-up">
+            <h3 id="testimonial-form-title" className="text-xl font-bold text-slate-900 mb-4">Tulis Testimoni</h3>
+            <form onSubmit={handleSubmit} className="space-y-4" noValidate>
               <div>
-                <label className="block text-xs font-semibold text-slate-600 mb-1">Nama Lengkap</label>
-                <input required type="text" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-teal-500" placeholder="Misal: Dr. Arifin Kusuma" />
+                <label htmlFor="testi-name" className="block text-xs font-semibold text-slate-600 mb-1">Nama Lengkap</label>
+                <input id="testi-name" required type="text" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20" placeholder="Misal: Dr. Arifin Kusuma" aria-required="true" />
               </div>
               <div>
-                <label className="block text-xs font-semibold text-slate-600 mb-1">Jabatan / Instansi</label>
-                <input required type="text" value={formData.title} onChange={e => setFormData({...formData, title: e.target.value})} className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-teal-500" placeholder="Misal: Kepala Lab, UI" />
+                <label htmlFor="testi-title" className="block text-xs font-semibold text-slate-600 mb-1">Jabatan / Instansi</label>
+                <input id="testi-title" required type="text" value={formData.title} onChange={e => setFormData({...formData, title: e.target.value})} className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20" placeholder="Misal: Kepala Lab, UI" aria-required="true" />
               </div>
               <div>
-                <label className="block text-xs font-semibold text-slate-600 mb-1">Rating (1-5)</label>
-                <input required type="number" min="1" max="5" value={formData.rating} onChange={e => setFormData({...formData, rating: Number(e.target.value)})} className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-teal-500" />
+                <label htmlFor="testi-rating" className="block text-xs font-semibold text-slate-600 mb-1">Rating (1-5)</label>
+                <input id="testi-rating" required type="number" min="1" max="5" value={formData.rating} onChange={e => setFormData({...formData, rating: Number(e.target.value)})} className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20" aria-required="true" />
               </div>
               <div>
-                <label className="block text-xs font-semibold text-slate-600 mb-1">Pesan Testimoni</label>
-                <textarea required rows={4} value={formData.text} onChange={e => setFormData({...formData, text: e.target.value})} className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-teal-500" placeholder="Pelayanan sangat memuaskan..." />
+                <label htmlFor="testi-text" className="block text-xs font-semibold text-slate-600 mb-1">Pesan Testimoni</label>
+                <textarea id="testi-text" required rows={4} value={formData.text} onChange={e => setFormData({...formData, text: e.target.value})} className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 resize-none" placeholder="Pelayanan sangat memuaskan..." aria-required="true" />
               </div>
               <div className="flex justify-end gap-3 pt-2">
-                <button type="button" onClick={() => setShowForm(false)} className="px-4 py-2 text-sm font-semibold text-slate-500 hover:text-slate-700">Batal</button>
-                <button type="submit" disabled={isSubmitting} className="px-6 py-2 text-sm font-bold text-white bg-teal-600 hover:bg-teal-500 rounded-lg disabled:opacity-50">
+                <button type="button" onClick={() => setShowForm(false)} className="px-4 py-2 text-sm font-semibold text-slate-500 hover:text-slate-700 transition-colors">Batal</button>
+                <button type="submit" disabled={isSubmitting} className="px-6 py-2 text-sm font-bold text-white bg-teal-600 hover:bg-teal-500 rounded-lg disabled:opacity-50 transition-colors">
                   {isSubmitting ? "Mengirim..." : "Kirim"}
                 </button>
               </div>
@@ -212,7 +239,7 @@ export default function TestimonialsSection() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {dbTestis.slice(0, 6).map((t, idx) => (
               <div
-                key={t.name}
+                key={`${t.name}-${idx}`}
                 className={`
                   relative bg-slate-50 border border-slate-100 rounded-2xl p-7
                   flex flex-col justify-between
@@ -224,6 +251,7 @@ export default function TestimonialsSection() {
                 {/* Top accent line */}
                 <div
                   className="absolute top-0 left-0 right-0 h-[3px] rounded-t-2xl"
+                  aria-hidden="true"
                   style={{
                     background:
                       t.color === "teal"
@@ -236,9 +264,9 @@ export default function TestimonialsSection() {
 
                 <div>
                   {/* Stars */}
-                  <div className="flex items-center gap-0.5 mb-4 mt-2">
+                  <div className="flex items-center gap-0.5 mb-4 mt-2" aria-label={`Rating ${t.rating} dari 5`}>
                     {Array.from({ length: t.rating }).map((_, j) => (
-                      <svg key={j} className="w-4 h-4 text-amber-400 fill-current" viewBox="0 0 24 24">
+                      <svg key={j} className="w-4 h-4 text-amber-400 fill-current" viewBox="0 0 24 24" aria-hidden="true">
                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                       </svg>
                     ))}
@@ -255,6 +283,7 @@ export default function TestimonialsSection() {
                   <div
                     className={`w-11 h-[50px] bg-gradient-to-br ${avatarStyle[t.color]?.bg ?? "from-teal-400 to-teal-600"} flex items-center justify-center text-white font-bold text-xs flex-shrink-0`}
                     style={{ clipPath: "polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%)" }}
+                    aria-hidden="true"
                   >
                     {t.avatar}
                   </div>
@@ -281,14 +310,15 @@ export default function TestimonialsSection() {
 
           <div className="relative overflow-hidden rounded-2xl bg-slate-50 border border-slate-100 py-5">
             {/* Left fade */}
-            <div className="absolute left-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-r from-slate-50 to-transparent pointer-events-none" />
+            <div className="absolute left-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-r from-slate-50 to-transparent pointer-events-none" aria-hidden="true" />
             {/* Right fade */}
-            <div className="absolute right-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-l from-slate-50 to-transparent pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-l from-slate-50 to-transparent pointer-events-none" aria-hidden="true" />
 
             {/* Scrolling track */}
             <div
               className="flex items-center animate-marquee"
               style={{ width: "max-content" }}
+              aria-hidden="true"
             >
               {logoTrack.map((logo, i) => (
                 <div
@@ -302,7 +332,7 @@ export default function TestimonialsSection() {
                     width={100}
                     height={48}
                     className="h-10 w-auto object-contain grayscale hover:grayscale-0 opacity-50 hover:opacity-100 transition-all duration-300"
-                    unoptimized
+                    loading="lazy"
                   />
                 </div>
               ))}

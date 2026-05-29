@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import { waLink } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Garansi & Kalibrasi",
@@ -61,7 +62,7 @@ export default function GaransiPage() {
             Hubungi tim teknisi kami sekarang. Kami siap menjadwalkan kunjungan teknis ke laboratorium Anda.
           </p>
           <a
-            href="https://wa.me/6282125523466?text=Halo%20Andis%20Lab,%20saya%20ingin%20mengajukan%20perbaikan/kalibrasi%20alat."
+            href={waLink("Halo Andis Lab, saya ingin mengajukan perbaikan/kalibrasi alat.")}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-white text-indigo-600 font-bold py-3.5 px-8 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-white/20 hover:-translate-y-1"
