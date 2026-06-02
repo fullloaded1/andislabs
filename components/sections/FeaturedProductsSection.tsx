@@ -1,10 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
-import { getFeaturedProducts } from "@/data/products";
+import { getAllFeaturedProducts } from "@/data/products";
 import { WA_NUMBER, waLink } from "@/lib/constants";
 
 export default function FeaturedProductsSection() {
-  const featured = getFeaturedProducts().slice(0, 6);
+  const featured = getAllFeaturedProducts().slice(0, 6);
 
   return (
     <section className="py-20 md:py-28 bg-slate-50">
