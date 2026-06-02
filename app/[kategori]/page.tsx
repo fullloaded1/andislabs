@@ -109,29 +109,7 @@ export default async function KategoriPage({ params }: PageProps) {
           {/* Sidebar */}
           <aside className="w-full lg:w-60 flex-shrink-0">
             <div className="bg-white rounded-2xl border border-slate-100 p-5 sticky top-24">
-              <h3 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-4">
-                Sub Kategori
-              </h3>
-              <ul className="space-y-1">
-                {subKategoriList.map((sub) => {
-                  const count = categoryProducts.filter((p) => p.sub_kategori === sub).length;
-                  return (
-                    <li key={sub}>
-                      <a
-                        href={`#${sub.toLowerCase().replace(/\s+/g, "-")}`}
-                        className="flex items-center justify-between px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 hover:text-teal-600 transition-colors text-sm"
-                      >
-                        <span>{sub}</span>
-                        <span className="text-xs bg-slate-100 text-slate-500 px-1.5 py-0.5 rounded-md">
-                          {count}
-                        </span>
-                      </a>
-                    </li>
-                  );
-                })}
-              </ul>
-
-              <div className="mt-6 pt-5 border-t border-slate-100">
+              <div>
                 <p className="text-xs font-semibold text-slate-800 mb-2">Butuh Bantuan?</p>
                 <p className="text-xs text-slate-500 mb-3 leading-relaxed">
                   Tim kami siap bantu pilih produk yang tepat.
@@ -177,30 +155,11 @@ export default async function KategoriPage({ params }: PageProps) {
 
           {/* Product area */}
           <main className="flex-1">
-            {subKategoriList.map((sub) => {
-              const subProducts = categoryProducts.filter((p) => p.sub_kategori === sub);
-              const anchorId = sub.toLowerCase().replace(/\s+/g, "-");
-
-              return (
-                <section
-                  key={sub}
-                  id={anchorId}
-                  className="mb-12 scroll-mt-24"
-                >
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="w-1 h-6 bg-teal-500 rounded-full" />
-                    <h2 className="text-lg font-bold text-slate-900">{sub}</h2>
-                    <span className="text-xs text-slate-400">({subProducts.length} produk)</span>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
-                    {subProducts.map((product) => (
-                      <ProductCard key={product.id} product={product} />
-                    ))}
-                  </div>
-                </section>
-              );
-            })}
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
+              {categoryProducts.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
           </main>
         </div>
       </div>

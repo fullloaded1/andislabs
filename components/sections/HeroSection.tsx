@@ -35,7 +35,7 @@ const BASE_SLIDES: Slide[] = [
     eyebrow: "Authorized Distributor • Since 1885",
     headline1: "Solusi Terbaik",
     headline2: "Lovibond® Indonesia",
-    sub: "Andis Lab adalah distributor resmi Lovibond® di Indonesia untuk kebutuhan pengujian kualitas air industri, laboratorium, lingkungan, dan water treatment.",
+    sub: "Katalog produk pengujian kualitas air industri, laboratorium, lingkungan, dan water treatment dari Lovibond®.",
     isShowcase: true,
     waMessage: "Halo Andis Lab, saya tertarik dengan produk Lovibond. Boleh minta informasi dan penawaran?",
   },
@@ -45,7 +45,7 @@ const BASE_SLIDES: Slide[] = [
     eyebrow: "Authorized Distributor • Trusted Since 1915",
     headline1: "Glassware Terbaik",
     headline2: "Pyrex® Indonesia",
-    sub: "Andis Lab adalah distributor resmi Pyrex® di Indonesia untuk kebutuhan glassware laboratorium berkualitas tinggi, riset ilmiah, industri, dan pendidikan.",
+    sub: "Katalog produk glassware laboratorium berkualitas tinggi untuk riset ilmiah, industri, dan pendidikan dari Pyrex®.",
     isShowcase: true,
     waMessage: "Halo Andis Lab, saya tertarik dengan produk Pyrex. Boleh minta informasi dan penawaran?",
   },
@@ -55,7 +55,7 @@ const BASE_SLIDES: Slide[] = [
     eyebrow: "Authorized Distributor • Daihan Labtech",
     headline1: "General Lab",
     headline2: "Daihan Labtech",
-    sub: "Andis Lab adalah distributor resmi Daihan Labtech di Indonesia. Oven, centrifuge, water bath, magnetic stirrer, dan instrumen laboratorium lengkap berkualitas tinggi.",
+    sub: "Katalog produk oven, centrifuge, water bath, magnetic stirrer, dan instrumen laboratorium lengkap dari Daihan Labtech.",
     isShowcase: true,
     waMessage: "Halo Andis Lab, saya tertarik dengan produk Daihan Labtech. Boleh minta informasi dan penawaran?",
   },
@@ -65,7 +65,7 @@ const BASE_SLIDES: Slide[] = [
     eyebrow: "Solusi Furnitur Lab • Andis Lab",
     headline1: "Custom Lab",
     headline2: "Furniture & Design",
-    sub: "Andis Lab menyediakan solusi furnitur laboratorium kustom meliputi Island Bench, Wall Bench, Fume Hood, serta perancangan ruang laboratorium terpadu sesuai standar keamanan internasional.",
+    sub: "Katalog Andislab: Lemari penyimpanan korosif bahan kimia, wet scrubber anti pencemaran, island bench, wall bench, dan fume hood standar keamanan internasional.",
     isShowcase: true,
     waMessage: "Halo Andis Lab, saya tertarik dengan layanan Custom Lab Furniture. Boleh minta informasi dan konsultasi?",
   },
@@ -125,14 +125,14 @@ export default function HeroSection({ promo }: HeroSectionProps) {
         if (!s.isShowcase) return null;
         const active = i === current;
 
-        const isPyrex      = s.id === 99;
-        const isLabTech    = s.id === 100;
-        const isCustomLab  = s.id === 101;
+        const isPyrex = s.id === 99;
+        const isLabTech = s.id === 100;
+        const isCustomLab = s.id === 101;
 
-        const accentColor  = isPyrex ? "#C0392B" : isLabTech ? "#0369A1" : isCustomLab ? "#0D7A5F" : "#2563EB";
+        const accentColor = isPyrex ? "#C0392B" : isLabTech ? "#0369A1" : isCustomLab ? "#0D7A5F" : "#2563EB";
         const accentShadow = isPyrex ? "0 4px 20px rgba(192,57,43,0.28)" : isLabTech ? "0 4px 20px rgba(3,105,161,0.28)" : isCustomLab ? "0 4px 20px rgba(13,122,95,0.28)" : "0 4px 20px rgba(37,99,235,0.28)";
         const gradientBase = isPyrex ? "225,238,248" : isLabTech ? "240,248,255" : isCustomLab ? "236,247,243" : "244,248,252";
-        const glowClass    = isPyrex ? "bg-red-400/20" : isLabTech ? "bg-sky-400/20" : isCustomLab ? "bg-teal-400/20" : "bg-blue-400/20";
+        const glowClass = isPyrex ? "bg-red-400/20" : isLabTech ? "bg-sky-400/20" : isCustomLab ? "bg-teal-400/20" : "bg-blue-400/20";
 
         return (
           <div
@@ -155,7 +155,7 @@ export default function HeroSection({ promo }: HeroSectionProps) {
               alt=""
               fill
               priority={i === 0}
-              className="object-cover object-center"
+              className={isCustomLab ? "object-contain object-right bg-[#e6ebf0]" : "object-cover object-center"}
               sizes="100vw"
             />
 

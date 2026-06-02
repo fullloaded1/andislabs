@@ -5,12 +5,12 @@ import Image from "next/image";
 
 const categoryCards = [
   {
-    slug: "general-lab",
-    label: "General Lab",
+    slug: "daihan-labtech",
+    label: "Daihan Labtech",
     description:
-      "Instrumen analitik, magnetic stirrer, hotplate, sentrifuge, dan peralatan umum laboratorium dari brand internasional terkemuka.",
-    href: "/general-lab",
-    image: "/images/cat-general-lab.png",
+      "General peralatan laboratorium umum yang sering dipakai. Magnetic stirrer, hotplate, sentrifuge, dan peralatan umum laboratorium.",
+    href: "/daihan-labtech",
+    image: "/images/hero-labtech.jpg",
     gradient: "from-blue-600/80 to-blue-900/90",
     icon: (
       <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.25}>
@@ -19,12 +19,12 @@ const categoryCards = [
     ),
   },
   {
-    slug: "custom-lab-furnitur",
-    label: "Custom Lab & Furnitur",
+    slug: "andislab-custom",
+    label: "Andislab Custom",
     description:
-      "Desain dan fabrikasi meja lab, lemari asam, lemari reagen, dan furnitur laboratorium custom sesuai spesifikasi ruangan Anda.",
-    href: "/custom-lab-furnitur",
-    image: "/images/cat-custom-lab.png",
+      "Custom lab dan furniture fabrikasi meja lab, lemari asam, biosafety cabinet, laminar air flow, flammable cabinet, acid cabinet, wet scrubber.",
+    href: "/andislab-custom",
+    image: "/images/Andislabcustom.png",
     gradient: "from-slate-700/80 to-slate-900/90",
     icon: (
       <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.25}>
@@ -33,12 +33,12 @@ const categoryCards = [
     ),
   },
   {
-    slug: "reagent-consumable",
-    label: "Reagent & Consumable",
+    slug: "lovibond",
+    label: "Lovibond",
     description:
-      "Bahan kimia reagen, pelarut organik, APD, tip pipet, dan consumable laboratorium berkualitas dengan jaminan kemurnian.",
-    href: "/reagent-consumable",
-    image: "/images/cat-reagent.png",
+      "Kebutuhan pengujian kualitas air industri, laboratorium, lingkungan, dan water treatment berkualitas dari Lovibond®.",
+    href: "/lovibond",
+    image: "/images/lovibond.jpg",
     gradient: "from-teal-600/80 to-teal-900/90",
     icon: (
       <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.25}>
@@ -47,12 +47,12 @@ const categoryCards = [
     ),
   },
   {
-    slug: "glassware",
-    label: "Glassware",
+    slug: "pyrex",
+    label: "Pyrex®",
     description:
       "Peralatan kaca borosilicate berkualitas tinggi: beaker, Erlenmeyer, labu ukur, pipet ukur, dan lengkap glassware lab.",
-    href: "/glassware",
-    image: "/images/cat-glassware.png",
+    href: "/pyrex",
+    image: "/images/pyrex100.png",
     gradient: "from-indigo-600/80 to-indigo-900/90",
     icon: (
       <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.25}>
@@ -91,12 +91,13 @@ export default function CategoriesSection() {
               href={cat.href}
               className="group relative overflow-hidden rounded-2xl min-h-[280px] flex flex-col justify-end cursor-pointer"
             >
-              {/* Product photo background — zooms on hover */}
               <Image
                 src={cat.image}
                 alt={cat.label}
                 fill
-                className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                className={`transition-transform duration-700 ease-out group-hover:scale-110 ${
+                  cat.slug === "andislab-custom" ? "object-contain bg-slate-200" : "object-cover"
+                }`}
                 loading="lazy"
               />
 

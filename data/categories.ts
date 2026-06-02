@@ -8,36 +8,36 @@ export type Kategori = {
 
 export const categories: Kategori[] = [
   {
-    slug: "general-lab",
-    label: "General Lab",
-    labelEn: "General Laboratory",
+    slug: "daihan-labtech",
+    label: "Daihan Labtech",
+    labelEn: "Daihan Labtech",
     deskripsi:
-      "Instrumen analitik, magnetic stirrer, hotplate, sentrifuge, dan peralatan umum laboratorium dari brand terkemuka.",
-    href: "/general-lab",
+      "General peralatan laboratorium umum yang sering dipakai. Magnetic stirrer, hotplate, sentrifuge, dan peralatan umum laboratorium.",
+    href: "/daihan-labtech",
   },
   {
-    slug: "custom-lab-furnitur",
-    label: "Custom Lab & Furnitur",
-    labelEn: "Custom Lab & Furniture",
+    slug: "andislab-custom",
+    label: "Andislab Custom",
+    labelEn: "Andislab Custom",
     deskripsi:
-      "Desain dan fabrikasi meja lab, lemari asam, lemari reagen, dan furnitur laboratorium custom sesuai spesifikasi.",
-    href: "/custom-lab-furnitur",
+      "Custom lab dan furniture fabrikasi meja lab, lemari asam, biosafety cabinet, laminar air flow, flammable cabinet, acid cabinet, wet scrubber.",
+    href: "/andislab-custom",
   },
   {
-    slug: "reagent-consumable",
-    label: "Reagent & Consumable",
-    labelEn: "Reagent & Consumable",
+    slug: "lovibond",
+    label: "Lovibond",
+    labelEn: "Lovibond",
     deskripsi:
-      "Bahan kimia reagen, pelarut organik, APD, tip pipet, dan habis pakai laboratorium dengan kualitas terjamin.",
-    href: "/reagent-consumable",
+      "Kebutuhan pengujian kualitas air industri, laboratorium, lingkungan, dan water treatment berkualitas dari Lovibond®.",
+    href: "/lovibond",
   },
   {
-    slug: "glassware",
-    label: "Glassware",
-    labelEn: "Laboratory Glassware",
+    slug: "pyrex",
+    label: "Pyrex",
+    labelEn: "Pyrex®",
     deskripsi:
-      "Peralatan kaca borosilicate berkualitas tinggi: beaker, Erlenmeyer, labu ukur, pipet, dan lebih banyak lagi.",
-    href: "/glassware",
+      "Peralatan kaca borosilicate berkualitas tinggi: beaker, Erlenmeyer, labu ukur, pipet, dan kelengkapan glassware lab.",
+    href: "/pyrex",
   },
 ];
 

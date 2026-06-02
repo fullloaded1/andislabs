@@ -4,8 +4,6 @@ import AboutSection from "@/components/sections/AboutSection";
 import WhyUsSection from "@/components/sections/WhyUsSection";
 import ServicesSection from "@/components/sections/ServicesSection";
 import CategoriesSection from "@/components/sections/CategoriesSection";
-import FeaturedProductsSection from "@/components/sections/FeaturedProductsSection";
-import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import CTASection from "@/components/sections/CTASection";
 import FAQSection from "@/components/sections/FAQSection";
 import BrandPartnersSection from "@/components/sections/BrandPartnersSection";
@@ -60,9 +58,7 @@ export default async function HomePage() {
       <WhyUsSection />
       <ServicesSection />
       <CategoriesSection />
-      <FeaturedProductsSection />
       <KatalogSection />
-      <TestimonialsSection />
       <ArticlesSection />
       <FAQSection />
       <CTASection />

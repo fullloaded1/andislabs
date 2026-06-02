@@ -5,8 +5,7 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: '*',
-      allow: '/',
+      disallow: '/', // 🚫 Mencegah Google/bot mengindeks website ini (Shadow Web)
     },
-    sitemap: `${SITE_URL}/sitemap.xml`,
   };
 }

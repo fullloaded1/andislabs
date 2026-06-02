@@ -13,57 +13,57 @@ const brands = [
     slug: "lovibond",
     tagline: "Water Quality Analysis",
     logo: "/images/logos/lovibond-logo.png",
-    href: "/general-lab",
-    color: "text-blue-600",
-    bg: "group-hover/brand:bg-blue-50",
+    href: "/lovibond",
+    color: "text-teal-600",
+    bg: "group-hover/brand:bg-teal-50",
   },
   {
     name: "Daihan Labtech",
     slug: "labtech",
     tagline: "General Lab Equipment",
     logo: "/images/logos/daihanlabtechlogo.png",
-    href: "/general-lab",
-    color: "text-sky-600",
-    bg: "group-hover/brand:bg-sky-50",
+    href: "/daihan-labtech",
+    color: "text-blue-600",
+    bg: "group-hover/brand:bg-blue-50",
   },
   {
-    name: "Pyrex® / IWAKI",
+    name: "Pyrex®",
     slug: "pyrex",
     tagline: "Lab Glassware",
     logo: "/images/logos/pyrexlogo.png",
-    href: "/glassware",
-    color: "text-red-600",
-    bg: "group-hover/brand:bg-red-50",
-  },
-  {
-    name: "Merck",
-    slug: "merck",
-    tagline: "Reagent & Chemicals",
-    logo: "/images/logos/Logo_Merck_KGaA_2015.svg.png",
-    href: "/reagent-consumable",
+    href: "/pyrex",
     color: "text-indigo-600",
     bg: "group-hover/brand:bg-indigo-50",
+  },
+  {
+    name: "Andislab Custom",
+    slug: "andislab-custom",
+    tagline: "Custom Lab Furniture",
+    logo: "/images/cat-custom-lab.png",
+    href: "/andislab-custom",
+    color: "text-slate-700",
+    bg: "group-hover/brand:bg-slate-100",
   },
 ];
 
 // ─── Category SVG icons ───────────────────────────────────────────
 const categoryIcons: Record<string, React.ReactNode> = {
-  "general-lab": (
+  "daihan-labtech": (
     <svg className="w-4 h-4 text-slate-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18" />
     </svg>
   ),
-  "custom-lab-furnitur": (
+  "andislab-custom": (
     <svg className="w-4 h-4 text-slate-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
     </svg>
   ),
-  "reagent-consumable": (
+  "lovibond": (
     <svg className="w-4 h-4 text-slate-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
     </svg>
   ),
-  "glassware": (
+  "pyrex": (
     <svg className="w-4 h-4 text-slate-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
     </svg>
@@ -126,11 +126,11 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center flex-shrink-0" aria-label="Andis Lab — ke beranda">
             <Image
-              src="/logo.png"
+              src="/logo-transparent.png"
               alt="Andis Lab"
-              width={180}
-              height={60}
-              className="h-12 w-auto object-contain"
+              width={240}
+              height={80}
+              className="h-16 md:h-20 w-auto object-contain animate-pulse"
               priority
             />
           </Link>

@@ -11,7 +11,7 @@ const stats = [
     ),
   },
   {
-    value: "500+",
+    value: "100+",
     label: "Klien Aktif",
     icon: (
       <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -29,7 +29,7 @@ const stats = [
     ),
   },
   {
-    value: "24/7",
+    value: "12/6",
     label: "Dukungan Teknis",
     icon: (
       <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">

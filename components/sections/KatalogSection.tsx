@@ -144,7 +144,7 @@ export default function KatalogSection() {
                       filter: isHovered ? "grayscale(0%)" : "grayscale(100%)",
                       opacity: isHovered ? 1 : 0.65,
                       mixBlendMode: "multiply",
-                      transform: brand.id === "custom" ? "scale(1.6)" : "none",
+                      transform: brand.id === "custom" ? "scale(1.6)" : brand.id === "labtech" ? "scale(1.4)" : "none",
                     }}
                   />
                 </div>
