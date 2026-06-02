@@ -96,15 +96,17 @@ export default function HeroSection({ promo }: HeroSectionProps) {
     : BASE_SLIDES;
 
   const [current, setCurrent] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   const goNext = useCallback(() => {
     setCurrent((c) => (c + 1) % slides.length);
   }, [slides.length]);
 
   useEffect(() => {
+    if (isPaused) return;
     const t = setInterval(goNext, DURATION);
     return () => clearInterval(t);
-  }, [goNext]);
+  }, [goNext, isPaused]);
 
   const slide = slides[current];
 
@@ -114,6 +116,8 @@ export default function HeroSection({ promo }: HeroSectionProps) {
       style={{ marginTop: 68, height: "calc(100dvh - 68px)", minHeight: 480 }}
       aria-roledescription="carousel"
       aria-label="Banner produk unggulan Andis Lab"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
     >
       {/* Live region for screen readers */}
       <div className="sr-only" aria-live="polite" aria-atomic="true">
