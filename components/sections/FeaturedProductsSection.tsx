@@ -43,8 +43,10 @@ export default async function FeaturedProductsSection() {
                 className="group bg-white rounded-2xl border border-slate-100 overflow-hidden hover:border-slate-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col"
               >
                 {/* Clickable image area */}
-                <Link
-                  href={`/${product.main_kategori}/${product.slug}`}
+                <a
+                  href={`https://andislab.com/${product.main_kategori}/${product.slug}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="relative h-52 flex items-center justify-center p-6 overflow-hidden flex-shrink-0 block bg-gradient-to-br from-slate-50 to-slate-100"
                 >
                   <Image
@@ -62,7 +64,7 @@ export default async function FeaturedProductsSection() {
                       {product.sub_kategori}
                     </span>
                   </div>
-                </Link>
+                </a>
 
                 {/* Content */}
                 <div className="p-5 flex flex-col flex-1">
@@ -70,11 +72,15 @@ export default async function FeaturedProductsSection() {
                     <span className="text-xs text-slate-400 font-medium">{product.sub_kategori}</span>
                   </div>
                   {/* Clickable title */}
-                  <Link href={`/${product.main_kategori}/${product.slug}`}>
+                  <a 
+                    href={`https://andislab.com/${product.main_kategori}/${product.slug}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <h3 className="font-bold text-slate-900 text-sm leading-snug mb-1 hover:text-teal-600 transition-colors line-clamp-2">
                       {product.nama_produk}
                     </h3>
-                  </Link>
+                  </a>
                   <p className="text-xs text-slate-500 mb-1">
                     Model: <span className="font-semibold text-slate-700">{product.model}</span>
                   </p>
@@ -84,12 +90,14 @@ export default async function FeaturedProductsSection() {
 
                   {/* CTA buttons */}
                   <div className="flex gap-2 mt-auto">
-                    <Link
-                      href={`/${product.main_kategori}/${product.slug}`}
+                    <a
+                      href={`https://andislab.com/${product.main_kategori}/${product.slug}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex-1 flex items-center justify-center border border-slate-200 hover:border-teal-300 hover:text-teal-600 text-slate-700 text-xs font-semibold py-2.5 rounded-xl transition-colors"
                     >
                       Detail
-                    </Link>
+                    </a>
                     <a
                       href={waLink(waMessage)}
                       target="_blank"
