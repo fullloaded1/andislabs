@@ -14,286 +14,8 @@ export interface Product {
   featured?: boolean;
 }
 
-export const products: Product[] = [
-  // ==================== DAIHAN LABTECH ====================
-  {
-    id: 1,
-    nama_produk: "Incubator Oven DO-150F",
-    slug: "incubator-oven-do-150f",
-    main_kategori: "daihan-labtech",
-    sub_kategori: "Oven & Incubator",
-    model: "DO-150F",
-    deskripsi_singkat: "Incubator Oven berkualitas tinggi untuk keperluan laboratorium.",
-    deskripsi_panjang: "Incubator Oven dari Daihan Labtech yang presisi, dirancang untuk pengujian stabil.",
-    spesifikasi: "Kapasitas: 150L | Digital Control",
-    fitur: ["Presisi tinggi", "Digital LCD"],
-    foto_utama: "/images/products/incubator_oven_1780381906452.png",
-    foto_lainnya: [],
-    featured: true,
-  },
-  {
-    id: 2,
-    nama_produk: "Centrifuge CF-10",
-    slug: "centrifuge-cf-10",
-    main_kategori: "daihan-labtech",
-    sub_kategori: "Centrifuge",
-    model: "CF-10",
-    deskripsi_singkat: "Centrifuge handal untuk pemisahan sampel cair.",
-    deskripsi_panjang: "Sentrifuge dari Labtech dengan motor efisien, aman, dan tahan lama.",
-    spesifikasi: "Max Speed: 10000 RPM",
-    fitur: ["Motor handal", "Aman digunakan"],
-    foto_utama: "/images/products/centrifuge_1780382108972.png",
-    foto_lainnya: [],
-  },
-
-  {
-    id: 4,
-    nama_produk: "Hotplate",
-    slug: "hotplate-labtech",
-    main_kategori: "daihan-labtech",
-    sub_kategori: "Pemanas",
-    model: "HP-300",
-    deskripsi_singkat: "Pemanas plat untuk berbagai preparasi.",
-    deskripsi_panjang: "Pemanas lab presisi, mendistribusikan panas merata.",
-    spesifikasi: "Suhu Maks: 380°C",
-    fitur: ["Pemanasan merata", "Tahan korosi"],
-    foto_utama: "/images/products/hotplate_1780382145396.png",
-    foto_lainnya: [],
-  },
-  {
-    id: 5,
-    nama_produk: "Water Bath",
-    slug: "water-bath-labtech",
-    main_kategori: "daihan-labtech",
-    sub_kategori: "Pemanas",
-    model: "WB-22",
-    deskripsi_singkat: "Penangas air dengan pengaturan digital.",
-    deskripsi_panjang: "Water bath untuk menjaga kestabilan suhu cairan dengan akurasi maksimal.",
-    spesifikasi: "Kapasitas: 22L | Suhu stabil",
-    fitur: ["Digital PID Control", "Material SS"],
-    foto_utama: "/images/products/water_bath_1780382174865.png",
-    foto_lainnya: [],
-  },
-
-  // ==================== ANDISLAB CUSTOM ====================
-  {
-    id: 6,
-    nama_produk: "Lemari Penyimpanan Korosif Bahan Kimia",
-    slug: "lemari-penyimpanan-korosif",
-    main_kategori: "andislab-custom",
-    sub_kategori: "Lemari Keselamatan",
-    model: "AL-COR",
-    deskripsi_singkat: "Baja Galvanis Ganda, Penampung Tumpahan.",
-    deskripsi_panjang: "Lemari keselamatan untuk bahan kimia korosif, material baja galvanis dilapisi bahan tahan korosi.",
-    spesifikasi: "Material: Baja Galvanis Ganda",
-    fitur: ["Tahan asam kuat", "Sistem ventilasi udara"],
-    foto_utama: "/images/products/corrosive_cabinet_1780381865634.png",
-    foto_lainnya: [],
-    featured: true,
-  },
-  {
-    id: 7,
-    nama_produk: "Lemari Penyimpanan Mudah Terbakar",
-    slug: "lemari-mudah-terbakar",
-    main_kategori: "andislab-custom",
-    sub_kategori: "Lemari Keselamatan",
-    model: "AL-FLAM",
-    deskripsi_singkat: "Tahan Api, Pintu Ganda, Gembok Cargo.",
-    deskripsi_panjang: "Kabinet khusus penyimpanan bahan kimia mudah terbakar sesuai standar keselamatan industri.",
-    spesifikasi: "Material: Double wall steel",
-    fitur: ["Tahan api", "Gembok pengaman ekstra"],
-    foto_utama: "/images/products/flammable_cabinet_1780381842130.png",
-    foto_lainnya: [],
-  },
-  {
-    id: 8,
-    nama_produk: "Flokulator Portabel FB-4S",
-    slug: "flokulator-portabel-fb-4s",
-    main_kategori: "andislab-custom",
-    sub_kategori: "Instrumen Uji",
-    model: "FB-4S",
-    deskripsi_singkat: "4 Posisi, Kontrol Digital LCD.",
-    deskripsi_panjang: "Alat flokulator (Jar Test) dengan 4 posisi untuk uji kualitas dan koagulasi air.",
-    spesifikasi: "4 Posisi | Digital Control",
-    fitur: ["Portabel", "Kecepatan akurat"],
-    foto_utama: "/images/products/portable_flocculator_1780381881444.png",
-    foto_lainnya: [],
-  },
-  {
-    id: 9,
-    nama_produk: "Lemari Asam (Fume Hood) FH",
-    slug: "lemari-asam-fh",
-    main_kategori: "andislab-custom",
-    sub_kategori: "Fume Hood",
-    model: "AL-FH",
-    deskripsi_singkat: "Material Tahan Kimia, Ventilasi Optimal.",
-    deskripsi_panjang: "Fume hood / lemari asam dengan exhaust sistem tinggi untuk pembuangan gas beracun.",
-    spesifikasi: "Lampu LED, Blower sentrifugal",
-    fitur: ["Sirkulasi udara sempurna", "Aman & Tahan Lama"],
-    foto_utama: "/images/products/fume_hood_1780381824204.png",
-    foto_lainnya: [],
-  },
-  {
-    id: 10,
-    nama_produk: "Wet Scrubber Anti Pencemaran",
-    slug: "wet-scrubber",
-    main_kategori: "andislab-custom",
-    sub_kategori: "Sistem Pembuangan Gas",
-    model: "AL-WS",
-    deskripsi_singkat: "Material PVC Tahan Korosif, Pembersih Gas Efektif.",
-    deskripsi_panjang: "Sistem wet scrubber industri untuk menetralisir gas buang limbah laboratorium sebelum dilepas ke udara.",
-    spesifikasi: "Material: PVC Tebal",
-    fitur: ["Sangat efisien", "Tahan korosi"],
-    foto_utama: "/images/products/wet_scrubber_1780381894939.png",
-    foto_lainnya: [],
-  },
-
-  // ==================== LOVIBOND ====================
-  {
-    id: 11,
-    nama_produk: "Kabinet Termostatik BOD",
-    slug: "kabinet-termostatik-bod",
-    main_kategori: "lovibond",
-    sub_kategori: "Uji Kualitas Air",
-    model: "BOD",
-    deskripsi_singkat: "Untuk keperluan pengeraman BOD pada suhu presisi.",
-    deskripsi_panjang: "Kabinet termostatik untuk pengujian Biochemical Oxygen Demand (BOD) dalam air limbah.",
-    spesifikasi: "Suhu konstan 20°C",
-    fitur: ["Akurasi tinggi", "Sistem pendingin stabil"],
-    foto_utama: "/images/products/bod_incubator_1780382189257.png",
-    foto_lainnya: [],
-    featured: true,
-  },
-  {
-    id: 12,
-    nama_produk: "Thermoreactor RD 125",
-    slug: "thermoreactor-rd-125",
-    main_kategori: "lovibond",
-    sub_kategori: "Reaktor Termal",
-    model: "RD 125",
-    deskripsi_singkat: "Thermoreaktor (COD) analisis air industri.",
-    deskripsi_panjang: "Perangkat termoreaktor untuk determinasi COD, TOC, dan Fosfat total secara presisi.",
-    spesifikasi: "Kapasitas: 24 vial",
-    fitur: ["Pemanasan cepat", "Otomatis mati saat selesai"],
-    foto_utama: "/images/products/thermoreactor_1780382212554.png",
-    foto_lainnya: [],
-  },
-  {
-    id: 13,
-    nama_produk: "Seri Handheld SD",
-    slug: "handheld-sd",
-    main_kategori: "lovibond",
-    sub_kategori: "Portabel Meter",
-    model: "SD Series",
-    deskripsi_singkat: "Meter portabel untuk pH, DO, Konduktivitas.",
-    deskripsi_panjang: "Perangkat lapangan yang praktis untuk pengukuran berbagai parameter air secara real-time.",
-    spesifikasi: "Waterproof IP67",
-    fitur: ["Ringan", "Mudah dibaca"],
-    foto_utama: "/images/products/handheld_meter_1780382231708.png",
-    foto_lainnya: [],
-  },
-  {
-    id: 14,
-    nama_produk: "Floc Tester ET 730",
-    slug: "floc-tester-et-730",
-    main_kategori: "lovibond",
-    sub_kategori: "Flokulator",
-    model: "ET 730",
-    deskripsi_singkat: "Alat Jar Test handal dari Lovibond.",
-    deskripsi_panjang: "Flokulator untuk optimasi koagulan dalam pengolahan air bersih dan limbah.",
-    spesifikasi: "Kecepatan rotasi fleksibel",
-    fitur: ["Pengatur kecepatan digital", "Motor senyap"],
-    foto_utama: "/images/products/floc_tester_1780382246017.png",
-    foto_lainnya: [],
-  },
-  {
-    id: 15,
-    nama_produk: "Kit Uji Air Pendingin",
-    slug: "kit-uji-air",
-    main_kategori: "lovibond",
-    sub_kategori: "Test Kit",
-    model: "Cooling Water",
-    deskripsi_singkat: "Perlengkapan komplit uji cepat parameter air.",
-    deskripsi_panjang: "Satu set lengkap peralatan dan reagen untuk memonitor parameter kritis di sistem air pendingin.",
-    spesifikasi: "Test case lengkap",
-    fitur: ["Otomatis dan cepat", "Banyak parameter"],
-    foto_utama: "/images/products/test_kit_1780382258811.png",
-    foto_lainnya: [],
-  },
-
-  // ==================== PYREX ====================
-  {
-    id: 16,
-    nama_produk: "Gelas Piala (Beaker) 250ml",
-    slug: "gelas-piala-250",
-    main_kategori: "pyrex",
-    sub_kategori: "Gelas Lab",
-    model: "Pyrex 1000",
-    deskripsi_singkat: "Beaker glass standar borosilicate tinggi.",
-    deskripsi_panjang: "Gelas piala serbaguna dengan takaran jelas, tahan panas tinggi dan bahan kimia.",
-    spesifikasi: "Kapasitas: 250ml | Skala jelas",
-    fitur: ["Tahan pemanasan langsung", "Tebal"],
-    foto_utama: "/images/products/beaker_1780382271924.png",
-    foto_lainnya: [],
-    featured: true,
-  },
-  {
-    id: 17,
-    nama_produk: "Labu Erlenmeyer 250ml",
-    slug: "labu-erlenmeyer-250",
-    main_kategori: "pyrex",
-    sub_kategori: "Gelas Lab",
-    model: "Pyrex 4980",
-    deskripsi_singkat: "Erlenmeyer klasik untuk titrasi dan pencampuran.",
-    deskripsi_panjang: "Desain kerucut ideal untuk mencegah percikan selama proses titrasi cairan di lab.",
-    spesifikasi: "Kapasitas: 250ml",
-    fitur: ["Desain mulut pas", "Bahan tahan lama"],
-    foto_utama: "https://via.placeholder.com/600x600.png?text=Erlenmeyer",
-    foto_lainnya: [],
-  },
-  {
-    id: 18,
-    nama_produk: "Labu Takar (Volumetrik) 250ml",
-    slug: "labu-takar-250",
-    main_kategori: "pyrex",
-    sub_kategori: "Gelas Ukur",
-    model: "Pyrex Vol",
-    deskripsi_singkat: "Labu volumetrik dengan keakuratan tinggi (Class A).",
-    deskripsi_panjang: "Alat gelas untuk membuat larutan standar dengan konsentrasi yang sangat presisi.",
-    spesifikasi: "Kapasitas: 250ml | Glass stopper",
-    fitur: ["Sangat akurat", "Class A tolerance"],
-    foto_utama: "https://via.placeholder.com/600x600.png?text=Labu+Takar",
-    foto_lainnya: [],
-  },
-  {
-    id: 19,
-    nama_produk: "Silinder Ukur (Measuring Cylinder)",
-    slug: "silinder-ukur",
-    main_kategori: "pyrex",
-    sub_kategori: "Gelas Ukur",
-    model: "Pyrex MC",
-    deskripsi_singkat: "Gelas ukur berskala untuk pengukuran cairan rutin.",
-    deskripsi_panjang: "Silinder ukur berbahan borosilicate tebal dengan dasar rata segi enam agar stabil.",
-    spesifikasi: "Bibir penuang cair",
-    fitur: ["Mudah dibaca", "Tahan pecah"],
-    foto_utama: "https://via.placeholder.com/600x600.png?text=Silinder+Ukur",
-    foto_lainnya: [],
-  },
-  {
-    id: 20,
-    nama_produk: "Pipet Ukur",
-    slug: "pipet-ukur",
-    main_kategori: "pyrex",
-    sub_kategori: "Pipet",
-    model: "Pyrex Pipette",
-    deskripsi_singkat: "Pipet presisi untuk transfer cairan akurat.",
-    deskripsi_panjang: "Pipet dengan skala terukir warna agar cairan dapat dipindahkan dengan perhitungan akurat.",
-    spesifikasi: "Color coded",
-    fitur: ["Sangat jernih", "Class A"],
-    foto_utama: "https://via.placeholder.com/600x600.png?text=Pipet+Ukur",
-    foto_lainnya: [],
-  }
-];
+import { prisma } from "@/lib/db";
+import type { Product as PrismaProduct, ProductSpec } from "@prisma/client";
 
 export const KATEGORI_SLUGS = [
   "daihan-labtech",
@@ -302,14 +24,56 @@ export const KATEGORI_SLUGS = [
   "pyrex",
 ];
 
-export function getProductsByKategori(kategoriSlug: string): Product[] {
-  return products.filter((p) => p.main_kategori === kategoriSlug);
+// Helper to map Prisma product to legacy Product interface
+function mapToLegacyProduct(p: PrismaProduct & { specs?: ProductSpec[] }): Product {
+  return {
+    id: p.id as any, // Using string id in place of number
+    nama_produk: p.name,
+    slug: p.slug,
+    main_kategori: p.category,
+    sub_kategori: p.subcategory || "",
+    model: p.model,
+    deskripsi_singkat: p.description,
+    deskripsi_panjang: p.description,
+    spesifikasi: p.specs?.map(s => `${s.label}: ${s.value}`).join(' | ') || "",
+    fitur: [], // Legacy interface requires string[], but not in DB
+    foto_utama: p.image,
+    foto_lainnya: [],
+    // Simple logic for featured (e.g. price > 10M, or arbitrary logic based on ID for now)
+    featured: p.price > 10000000, 
+  };
 }
 
-export function getProductBySlug(slug: string): Product | undefined {
-  return products.find((p) => p.slug === slug);
+export async function getProductsByKategori(kategoriSlug: string): Promise<Product[]> {
+  const data = await prisma.product.findMany({
+    where: { category: kategoriSlug },
+    include: { specs: true }
+  });
+  return data.map(mapToLegacyProduct);
 }
 
-export function getAllFeaturedProducts(): Product[] {
-  return products.filter((p) => p.featured);
+export async function getProductBySlug(slug: string): Promise<Product | undefined> {
+  const data = await prisma.product.findUnique({
+    where: { slug },
+    include: { specs: true }
+  });
+  return data ? mapToLegacyProduct(data) : undefined;
+}
+
+export async function getAllProducts(): Promise<Product[]> {
+  const data = await prisma.product.findMany({
+    include: { specs: true }
+  });
+  return data.map(mapToLegacyProduct);
+}
+
+export async function getAllFeaturedProducts(): Promise<Product[]> {
+  // Let's assume featured products are those with a high price for now as an example,
+  // or we can fetch a specific subset
+  const data = await prisma.product.findMany({
+    take: 6,
+    orderBy: { price: 'desc' },
+    include: { specs: true }
+  });
+  return data.map(mapToLegacyProduct);
 }

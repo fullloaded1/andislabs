@@ -2,7 +2,6 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
-  products,
   getProductsByKategori,
   KATEGORI_SLUGS,
 } from "@/data/products";
@@ -46,7 +45,7 @@ export default async function KategoriPage({ params }: PageProps) {
 
   if (!cat) notFound();
 
-  const categoryProducts = getProductsByKategori(kategori);
+  const categoryProducts = await getProductsByKategori(kategori);
 
   // Get unique sub-categories
   const subKategoriList = [...new Set(categoryProducts.map((p) => p.sub_kategori))];

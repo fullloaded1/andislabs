@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { products, getProductBySlug, getProductsByKategori } from "@/data/products";
+import { getAllProducts, getProductBySlug, getProductsByKategori } from "@/data/products";
 import { getKategoriBySlug } from "@/data/categories";
 import ProductCard from "@/components/ui/ProductCard";
 import { WA_NUMBER, waLink, SITE_URL, SITE_NAME } from "@/lib/constants";
@@ -13,6 +13,7 @@ interface PageProps {
 
 // SSG: generate all product pages
 export async function generateStaticParams() {
+  const products = await getAllProducts();
   return products.map((p) => ({
     kategori: p.main_kategori,
     slug: p.slug,
@@ -21,7 +22,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { kategori, slug } = await params;
-  const product = getProductBySlug(slug);
+  const product = await getProductBySlug(slug);
   if (!product) return {};
 
   const cat = getKategoriBySlug(kategori);
@@ -52,7 +53,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function ProductDetailPage({ params }: PageProps) {
   const { kategori, slug } = await params;
-  const product = getProductBySlug(slug);
+  const product = await getProductBySlug(slug);
 
   if (!product || product.main_kategori !== kategori) notFound();
 
@@ -60,7 +61,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const waMessage = `Halo Andis Lab, saya tertarik dengan produk:\n\n*${product.nama_produk}*\nModel: ${product.model}\n\nMohon informasi harga dan ketersediaan stok. Terima kasih.`;
 
   // Related products (same category, different product)
-  const relatedProducts = getProductsByKategori(kategori)
+  const relatedProducts = (await getProductsByKategori(kategori))
     .filter((p) => p.id !== product.id)
     .slice(0, 3);
 

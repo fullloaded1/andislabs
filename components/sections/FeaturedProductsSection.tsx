@@ -3,8 +3,8 @@ import Image from "next/image";
 import { getAllFeaturedProducts } from "@/data/products";
 import { WA_NUMBER, waLink } from "@/lib/constants";
 
-export default function FeaturedProductsSection() {
-  const featured = getAllFeaturedProducts().slice(0, 6);
+export default async function FeaturedProductsSection() {
+  const featured = (await getAllFeaturedProducts()).slice(0, 6);
 
   return (
     <section className="py-20 md:py-28 bg-slate-50">

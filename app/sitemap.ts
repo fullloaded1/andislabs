@@ -1,9 +1,9 @@
 import { MetadataRoute } from 'next';
-import { products, KATEGORI_SLUGS } from '@/data/products';
+import { getAllProducts, KATEGORI_SLUGS } from '@/data/products';
 import { articles } from '@/data/articles';
 import { SITE_URL } from '@/lib/constants';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Static pages
   const staticPages = [
     { url: SITE_URL, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 1 },
@@ -21,7 +21,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  // Product detail pages (49+ pages!)
+  // Product detail pages
+  const products = await getAllProducts();
   const productUrls = products.map((p) => ({
     url: `${SITE_URL}/${p.main_kategori}/${p.slug}`,
     lastModified: new Date(),
