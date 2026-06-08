@@ -1,6 +1,6 @@
 // CTA Section — strong WhatsApp CTA, teal gradient background
 
-import { WA_NUMBER, waLink, SITE_EMAIL, SITE_PHONE } from "@/lib/constants";
+import { WA_NUMBER, waLink, SITE_PHONE } from "@/lib/constants";
 
 const WA_MESSAGE =
   "Halo Andis Lab, saya ingin berkonsultasi mengenai kebutuhan peralatan laboratorium kami.";
@@ -68,19 +68,10 @@ export default function CTASection() {
                 </svg>
                 Chat WhatsApp Sekarang
               </a>
-              <a
-                href={`mailto:${SITE_EMAIL}`}
-                className="inline-flex items-center justify-center gap-2 border-2 border-white/30 hover:border-white/60 text-white font-semibold px-8 py-4 rounded-xl transition-colors text-sm min-w-[180px]"
-              >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-                Kirim Email
-              </a>
             </div>
 
             <p className="text-white/50 text-xs">
-              {SITE_PHONE} · {SITE_EMAIL} · Respons dalam 1 jam kerja
+              {SITE_PHONE} · Respons dalam 1 jam kerja
             </p>
           </div>
         </div>

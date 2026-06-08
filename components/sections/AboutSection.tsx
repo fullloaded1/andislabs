@@ -15,16 +15,16 @@ export default function AboutSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
           {/* ── LEFT: Hexagon image composition ────────── */}
-          <div className="relative flex items-center justify-center min-h-[480px] order-2 lg:order-1">
+          <div className="relative flex items-center justify-center min-h-[580px] order-2 lg:order-1">
             {/* Background decorative circle */}
-            <div className="absolute w-80 h-80 bg-blue-50 rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
+            <div className="absolute w-[450px] h-[450px] bg-blue-50 rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
 
             {/* Main hexagon — lab image */}
             <div
               className="relative z-10 overflow-hidden shadow-2xl"
               style={{
-                width: 340,
-                height: 390,
+                width: 460,
+                height: 520,
                 clipPath:
                   "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
               }}
@@ -32,8 +32,8 @@ export default function AboutSection() {
               <Image
                 src="/images/lab-about.png"
                 alt="Laboratorium modern Andis Lab"
-                width={340}
-                height={390}
+                width={460}
+                height={520}
                 className="w-full h-full object-cover"
               />
             </div>

@@ -39,7 +39,7 @@ const brands = [
     name: "Andislab Custom",
     slug: "andislab-custom",
     tagline: "Custom Lab Furniture",
-    logo: "/images/cat-custom-lab.png",
+    logo: "/logo.png",
     href: "/andislab-custom",
     color: "text-slate-700",
     bg: "group-hover/brand:bg-slate-100",
@@ -268,9 +268,9 @@ export default function Navbar() {
             <Link href="/artikel" className="text-slate-600 hover:text-teal-600 transition-colors">
               Artikel
             </Link>
-            <Link href="/#kontak" className="text-slate-600 hover:text-teal-600 transition-colors">
-              Kontak
-            </Link>
+            <a href="https://andislab.com/?ready-stock=true" className="text-slate-600 hover:text-teal-600 transition-colors font-bold">
+              Ready Stock
+            </a>
           </div>
 
           {/* Desktop CTA */}
@@ -384,13 +384,13 @@ export default function Navbar() {
             >
               Artikel
             </Link>
-            <Link
-              href="/#kontak"
+            <a
+              href="https://andislab.com/?ready-stock=true"
               onClick={() => setMobileOpen(false)}
-              className="block px-4 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-teal-600 rounded-lg transition-colors"
+              className="block px-4 py-2.5 text-sm font-bold text-slate-700 hover:bg-slate-50 hover:text-teal-600 rounded-lg transition-colors"
             >
-              Kontak
-            </Link>
+              Ready Stock
+            </a>
 
             <div className="px-4 pt-2 pb-1">
               <a

@@ -2,7 +2,8 @@
 
 import { Download, FileText, Clock, ArrowRight } from "lucide-react";
 import { useState } from "react";
-import { waLink } from "@/lib/constants";
+
+
 
 const brands = [
   {
@@ -14,9 +15,9 @@ const brands = [
       "Solusi lengkap untuk analisis kualitas air, mencakup fotometer, colorimeter, turbidimeter, dan kit pengujian presisi untuk laboratorium maupun lapangan.",
     logo: "/images/logos/lovibond-logo.png",
     accent: "blue" as const,
-    href: waLink("Halo Andis Lab, saya tertarik dengan produk Lovibond. Boleh saya melihat katalog terbarunya?"),
+    href: "/katalog-lovibond",
     ctaLabel: "Lihat Katalog Lovibond",
-    isExternal: true,
+    isExternal: false,
   },
   {
     id: "labtech",
@@ -40,9 +41,9 @@ const brands = [
       "Perancangan dan instalasi furnitur laboratorium kustom meliputi Island Bench, Wall Bench, Fume Hood, serta solusi ruang lab terpadu sesuai standar keamanan internasional.",
     logo: "/logo.png",
     accent: "slate" as const,
-    href: "/Andislabkatalog.pdf",
-    ctaLabel: "Lihat Portofolio Custom Lab",
-    isExternal: true,
+    href: "/katalog-custom-lab",
+    ctaLabel: "Lihat Katalog Custom Lab",
+    isExternal: false,
   },
 ];
 
