@@ -268,7 +268,7 @@ export default function Navbar() {
             <Link href="/artikel" className="text-slate-600 hover:text-teal-600 transition-colors">
               Artikel
             </Link>
-            <a href="https://andislab.com/ready-stock" className="text-slate-600 hover:text-teal-600 transition-colors font-bold">
+            <a href="https://andislab.com/ready-stock" className="bg-teal-600 hover:bg-teal-700 text-white text-[13px] px-4 py-2 rounded-lg font-bold transition-colors shadow-sm">
               Ready Stock
             </a>
           </div>
@@ -384,13 +384,15 @@ export default function Navbar() {
             >
               Artikel
             </Link>
-            <a
-              href="https://andislab.com/ready-stock"
-              onClick={() => setMobileOpen(false)}
-              className="block px-4 py-2.5 text-sm font-bold text-slate-700 hover:bg-slate-50 hover:text-teal-600 rounded-lg transition-colors"
-            >
-              Ready Stock
-            </a>
+            <div className="px-4 py-2">
+              <a
+                href="https://andislab.com/ready-stock"
+                onClick={() => setMobileOpen(false)}
+                className="block w-full text-center px-4 py-2.5 text-sm font-bold text-white bg-teal-600 hover:bg-teal-700 rounded-lg transition-colors shadow-sm"
+              >
+                Ready Stock
+              </a>
+            </div>
 
             <div className="px-4 pt-2 pb-1">
               <a
