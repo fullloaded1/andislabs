@@ -72,6 +72,26 @@ export const articles: Article[] = [
     readTime: "6 min read",
     views: 530,
   },
+  {
+    id: 4,
+    title: "Keandalan Baterai Yuasa untuk Kebutuhan Kereta Api dan Forklift",
+    slug: "baterai-yuasa-kereta-api-dan-forklift",
+    excerpt: "Temukan mengapa Baterai Yuasa menjadi pilihan utama sebagai sumber energi yang andal untuk kereta api dan forklift industri Anda.",
+    content: `
+      <p>Dalam industri transportasi dan logistik, keandalan sumber energi adalah faktor krusial. Baterai Yuasa telah terbukti menjadi salah satu solusi daya terbaik untuk aplikasi kelas berat seperti kereta api dan forklift.</p>
+      <ul>
+        <li><strong>Durabilitas Tinggi:</strong> Didesain dengan material berkualitas untuk menahan getaran ekstrem dan kondisi lingkungan operasional yang keras, sehingga sangat cocok untuk lokomotif kereta api.</li>
+        <li><strong>Siklus Hidup Panjang:</strong> Teknologi deep-cycle pada baterai traction Yuasa memungkinkan pengisian dan pengosongan daya berulang kali dengan performa yang konsisten, menjaga produktivitas forklift Anda tetap tinggi.</li>
+        <li><strong>Efisiensi Daya:</strong> Mampu memberikan arus awal yang kuat dan stabil yang dibutuhkan untuk mengangkat beban berat serta menggerakkan mesin industri bertenaga besar.</li>
+      </ul>
+      <p>Andis Lab sebagai distributor resmi menyediakan produk Baterai Yuasa berstandar industri dengan jaminan kualitas dan layanan purna jual yang terpercaya. Pastikan operasional industri Anda tidak terhenti karena masalah daya!</p>
+    `,
+    coverImage: "/images/logos/yuasa_battery_cropped.jpg",
+    category: "Infrastruktur Lab",
+    date: "10 Juni 2026",
+    readTime: "5 min read",
+    views: 120,
+  },
 ];
 
 export function getArticleBySlug(slug: string): Article | undefined {

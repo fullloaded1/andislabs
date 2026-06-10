@@ -19,6 +19,11 @@ const brands = [
     logo: "/images/logos/Logo_Merck_KGaA_2015.svg.png",
     multiply: false,
   },
+  {
+    name: "Yuasa Battery",
+    logo: "/images/logos/yuasa_battery_cropped.jpg",
+    multiply: false,
+  },
 ];
 
 export default function BrandPartnersSection() {
