@@ -69,6 +69,16 @@ const BASE_SLIDES: Slide[] = [
     isShowcase: true,
     waMessage: "Halo Andis Lab, saya tertarik dengan layanan Custom Lab Furniture. Boleh minta informasi dan konsultasi?",
   },
+  {
+    id: 102,
+    image: "/images/railway_maintenance.png",
+    eyebrow: "Solusi Pengujian & Perawatan • Transportasi",
+    headline1: "Laboratorium Transportasi",
+    headline2: "& Perawatan Kereta Api",
+    sub: "Solusi lengkap peralatan dan instrumen pengujian untuk laboratorium transportasi dan maintenance perkeretaapian.",
+    isShowcase: true,
+    waMessage: "Halo Andis Lab, saya tertarik dengan peralatan laboratorium transportasi dan perkeretaapian. Boleh minta informasi dan konsultasi?",
+  },
 ];
 
 // ─── Component ────────────────────────────────────────────────────────────────
@@ -132,11 +142,12 @@ export default function HeroSection({ promo }: HeroSectionProps) {
         const isPyrex = s.id === 99;
         const isLabTech = s.id === 100;
         const isCustomLab = s.id === 101;
+        const isTransport = s.id === 102;
 
-        const accentColor = isPyrex ? "#C0392B" : isLabTech ? "#0369A1" : isCustomLab ? "#0D7A5F" : "#2563EB";
-        const accentShadow = isPyrex ? "0 4px 20px rgba(192,57,43,0.28)" : isLabTech ? "0 4px 20px rgba(3,105,161,0.28)" : isCustomLab ? "0 4px 20px rgba(13,122,95,0.28)" : "0 4px 20px rgba(37,99,235,0.28)";
-        const gradientBase = isPyrex ? "225,238,248" : isLabTech ? "240,248,255" : isCustomLab ? "236,247,243" : "244,248,252";
-        const glowClass = isPyrex ? "bg-red-400/20" : isLabTech ? "bg-sky-400/20" : isCustomLab ? "bg-teal-400/20" : "bg-blue-400/20";
+        const accentColor = isPyrex ? "#C0392B" : isLabTech ? "#0369A1" : isCustomLab ? "#0D7A5F" : isTransport ? "#D97706" : "#2563EB";
+        const accentShadow = isPyrex ? "0 4px 20px rgba(192,57,43,0.28)" : isLabTech ? "0 4px 20px rgba(3,105,161,0.28)" : isCustomLab ? "0 4px 20px rgba(13,122,95,0.28)" : isTransport ? "0 4px 20px rgba(217,119,6,0.28)" : "0 4px 20px rgba(37,99,235,0.28)";
+        const gradientBase = isPyrex ? "225,238,248" : isLabTech ? "240,248,255" : isCustomLab ? "236,247,243" : isTransport ? "255,251,235" : "244,248,252";
+        const glowClass = isPyrex ? "bg-red-400/20" : isLabTech ? "bg-sky-400/20" : isCustomLab ? "bg-teal-400/20" : isTransport ? "bg-amber-400/20" : "bg-blue-400/20";
 
         return (
           <div
