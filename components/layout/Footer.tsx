@@ -16,9 +16,9 @@ export default function Footer() {
             <Image
               src="/logo-transparent.png"
               alt="Andis Lab"
-              width={160}
-              height={54}
-              className="h-12 w-auto object-contain"
+              width={240}
+              height={80}
+              className="h-16 md:h-20 w-auto object-contain drop-shadow-md bg-white/5 p-3 rounded-xl border border-white/10"
               loading="lazy"
             />
           </Link>
@@ -94,9 +94,9 @@ export default function Footer() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
                   <div className="flex flex-col gap-1">
-                    <span className="text-slate-400"><strong>Konsultasi:</strong> <a href="#" className="hover:text-teal-400 transition-colors">[Nomor Konsultasi]</a></span>
-                    <span className="text-slate-400"><strong>Sales:</strong> <a href="#" className="hover:text-teal-400 transition-colors">[Nomor Sales]</a></span>
-                    <span className="text-slate-400"><strong>Kantor:</strong> <a href="#" className="hover:text-teal-400 transition-colors">[Nomor Kantor]</a></span>
+                    <span className="text-slate-400"><strong>Konsultasi:</strong> <a href="https://wa.me/6282125523466" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 transition-colors">0821-2552-3466</a></span>
+                    <span className="text-slate-400"><strong>Sales:</strong> <a href="https://wa.me/6282125523466" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 transition-colors">0821-2552-3466</a></span>
+                    <span className="text-slate-400"><strong>Kantor:</strong> <a href="tel:+6282125523466" className="hover:text-teal-400 transition-colors">0821-2552-3466</a></span>
                   </div>
                 </div>
               </li>
@@ -109,8 +109,8 @@ export default function Footer() {
                   <span className="text-slate-300 font-medium">Email Resmi</span>
                 </div>
                 <div className="flex flex-col pl-6 gap-1">
-                  <a href={`mailto:info@andislabs.com`} className="text-slate-400 hover:text-teal-400 transition-colors">info@andislabs.com</a>
-                  <a href={`mailto:admin@andislabs.com`} className="text-slate-400 hover:text-teal-400 transition-colors">admin@andislabs.com</a>
+                  <a href={`mailto:info@andislab.com`} className="text-slate-400 hover:text-teal-400 transition-colors">info@andislab.com</a>
+                  <a href={`mailto:admin@andislab.com`} className="text-slate-400 hover:text-teal-400 transition-colors">admin@andislab.com</a>
                 </div>
               </li>
 

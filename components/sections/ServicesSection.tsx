@@ -35,7 +35,7 @@ const services = [
     title: "Supply Alat Lab",
     description:
       "Pengadaan peralatan laboratorium dari brand internasional terkemuka untuk kebutuhan riset, klinis, dan industri dengan jaminan keaslian produk.",
-    bullets: ["Instrument Analitik & Presisi", "Peralatan Umum Laboratorium", "Consumables & Reagent"],
+    bullets: ["Peralatan Presisi", "Peralatan Umum Laboratorium", "Consumables & Reagent"],
     link: "#kategori",
   },
   {

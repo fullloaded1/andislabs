@@ -39,6 +39,14 @@ export const categories: Kategori[] = [
       "Peralatan kaca borosilicate berkualitas tinggi: beaker, Erlenmeyer, labu ukur, pipet, dan kelengkapan glassware lab.",
     href: "/pyrex",
   },
+  {
+    slug: "yuasa",
+    label: "Yuasa",
+    labelEn: "Yuasa",
+    deskripsi:
+      "Baterai dan kelistrikan laboratorium yang andal dan berkualitas dari Yuasa.",
+    href: "/yuasa",
+  },
 ];
 
 export function getKategoriBySlug(slug: string): Kategori | undefined {

@@ -58,6 +58,11 @@ const comingSoon = [
     category: "Reagen",
     logo: "/images/logos/Logo_Merck_KGaA_2015.svg.png",
   },
+  {
+    name: "Yuasa",
+    category: "Baterai",
+    logo: "/images/logos/yuasa_battery_cropped.jpg",
+  },
 ];
 
 const accentMap = {
@@ -217,7 +222,7 @@ export default function KatalogSection() {
                     mixBlendMode: "multiply",
                   }}
                 />
-                <div className="flex flex-col">
+                <div className="flex flex-col items-center justify-center text-center">
                   <span className="text-sm font-semibold text-slate-500">
                     {item.name}
                   </span>

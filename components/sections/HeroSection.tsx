@@ -162,6 +162,7 @@ export default function HeroSection({ promo }: HeroSectionProps) {
               opacity: active ? 1 : 0,
               transition: "opacity 1.4s ease-in-out",
               pointerEvents: active ? "auto" : "none",
+              backgroundColor: `rgb(${gradientBase})`,
             }}
           >
             {/* Background */}
@@ -170,7 +171,7 @@ export default function HeroSection({ promo }: HeroSectionProps) {
               alt=""
               fill
               priority={i === 0}
-              className={isCustomLab ? "object-contain object-right bg-[#e6ebf0]" : "object-cover object-center"}
+              className={`opacity-40 sm:opacity-50 ${isCustomLab ? "object-contain object-right bg-[#e6ebf0]" : "object-cover object-center"}`}
               sizes="100vw"
             />
 
@@ -188,7 +189,7 @@ export default function HeroSection({ promo }: HeroSectionProps) {
 
             {/* Content */}
             <div className="relative z-20 h-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 flex items-center">
-              <div className="max-w-[500px]">
+              <div className="max-w-xl md:max-w-2xl">
 
                 {/* Eyebrow */}
                 <p
@@ -203,9 +204,9 @@ export default function HeroSection({ promo }: HeroSectionProps) {
                   className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-[1.08] tracking-tight mb-4 sm:mb-5"
                   style={{ color: "#0A2540", animation: active ? "heroTextUp 0.7s ease 0.2s both" : undefined }}
                 >
-                  {s.headline1}
+                  <span className="inline-block">{s.headline1}</span>
                   <br />
-                  <span style={{ color: accentColor }}>{s.headline2}</span>
+                  <span style={{ color: accentColor }} className="inline-block">{s.headline2}</span>
                 </h1>
 
                 {/* Sub — responsive */}

@@ -10,6 +10,11 @@ const brands = [
     multiply: true,
   },
   {
+    name: "Yuasa Battery",
+    logo: "/images/logos/yuasa_battery_cropped.jpg",
+    multiply: false,
+  },
+  {
     name: "Daihan Labtech",
     logo: "/images/logos/daihanlabtechlogo.png",
     multiply: false,
@@ -17,11 +22,6 @@ const brands = [
   {
     name: "Merck",
     logo: "/images/logos/Logo_Merck_KGaA_2015.svg.png",
-    multiply: false,
-  },
-  {
-    name: "Yuasa Battery",
-    logo: "/images/logos/yuasa_battery_cropped.jpg",
     multiply: false,
   },
 ];
@@ -34,17 +34,12 @@ export default function BrandPartnersSection() {
           Authorized Distributor Resmi
         </p>
 
-        <div className="flex flex-wrap justify-center items-center gap-16 md:gap-24 lg:gap-32">
+        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-10 lg:gap-16">
           {brands.map((b) => (
             <div
               key={b.name}
-              className="opacity-70 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300 transform hover:scale-105"
+              className="w-28 sm:w-32 md:w-40 lg:w-48 h-16 md:h-20 flex items-center justify-center opacity-70 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300 transform hover:scale-105"
               style={{
-                width: 200,
-                height: 80,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
               }}
             >
               <img

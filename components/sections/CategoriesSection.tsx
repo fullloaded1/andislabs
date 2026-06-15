@@ -102,6 +102,9 @@ export default function CategoriesSection() {
                 loading="lazy"
               />
 
+              {/* Overlay gelap agar teks lebih kontras */}
+              <div className="absolute inset-0 bg-black/40" aria-hidden="true" />
+
               {/* Gradient overlay on top of photo */}
               <div className={`absolute inset-0 bg-gradient-to-t ${cat.gradient}`} aria-hidden="true" />
 
