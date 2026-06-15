@@ -107,6 +107,7 @@ export default function ServicesSection() {
 
           <p className="text-slate-500 leading-relaxed">
             Dari pengadaan alat hingga desain ruang laboratorium,
+            <br />
             one-stop solution untuk semua kebutuhan lab Anda.
           </p>
         </div>

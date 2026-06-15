@@ -72,7 +72,7 @@ export default function WhyUsSection() {
             Keunggulan Kami
           </p>
           <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight mb-4">
-            Mengapa Memilih Andis Lab?
+            Mengapa Memilih AndisLab?
           </h2>
 
           <p className="text-slate-500 leading-relaxed">

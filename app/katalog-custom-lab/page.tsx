@@ -103,14 +103,14 @@ const customLabKatalog = [
     slug: "fume-hood",
     nama: "Fume Hood (Lemari Asam)",
     deskripsiKategori:
-      "Lemari asam / fume hood tersedia dalam 4 material berbeda: Polypropylene (PP), Metal Galvanized (MG), Stainless Steel (SS), dan Plywood (P). Tersedia varian manual dan digital.",
+      "Lemari asam / fume hood tersedia dalam 3 material berbeda: Polypropylene (PP), Metal Galvanized (MG), dan Stainless Steel (SS). Tersedia varian manual dan digital.",
     produk: [
       {
         id: 4,
         nama: "Fume Hood Polypropylene (FH PP)",
         foto: "/images/custom-lab-pdf/prod_fume_hood_pp.jpeg",
         deskripsi:
-          "Fume hood berbahan Polypropylene tahan asam dan basa kuat. Tersedia varian standar dan digital dengan monitor face velocity.",
+          "Fume hood berbahan Polypropylene tahan asam and basa kuat. Tersedia varian standar dan digital dengan monitor face velocity.",
         spesifikasi: {
           Material: "Polypropylene (PP)",
           Dimensi: "P×L×T (mm)",
@@ -162,25 +162,6 @@ const customLabKatalog = [
           { kode: "FH 1800 SS", ukuran: "1800×740×2300", kapasitas: "", desain: "Standar" },
         ],
       },
-      {
-        id: 7,
-        nama: "Fume Hood Plywood (FH P)",
-        foto: "/images/custom-lab-pdf/prod_fume_hood_p.jpeg",
-        deskripsi:
-          "Fume hood berbahan plywood berkualitas dengan lapisan HPL anti-kimia. Pilihan ekonomis untuk laboratorium pendidikan dan penelitian umum.",
-        spesifikasi: {
-          Material: "Plywood + HPL",
-          Dimensi: "P×L×T (mm)",
-          Tinggi: "2300 mm",
-          Kontrol: "Manual / Digital",
-        },
-        model: [
-          { kode: "FH 900 P", ukuran: "900×740×2300", kapasitas: "", desain: "Standar" },
-          { kode: "FH 1200 P", ukuran: "1200×740×2300", kapasitas: "", desain: "Standar" },
-          { kode: "FH 1500 P", ukuran: "1500×740×2300", kapasitas: "", desain: "Standar" },
-          { kode: "FH 1800 P", ukuran: "1800×740×2300", kapasitas: "", desain: "Standar" },
-        ],
-      },
     ],
   },
   {
@@ -192,7 +173,7 @@ const customLabKatalog = [
       {
         id: 8,
         nama: "Flokulator Portabel FB-4S",
-        foto: "/images/custom-lab-pdf/prod_flokulator.png",
+        foto: "/images/custom-lab-pdf/flokulator_portabel.png",
         deskripsi:
           "Flokulator portabel dengan 4 spindel, kontrol digital LCD layar sentuh 4,3 inchi. Kecepatan 10–300 rpm, pengaturan waktu 1–999 detik/menit. 5 slot kustomisasi pengaturan.",
         spesifikasi: {

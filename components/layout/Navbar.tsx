@@ -265,9 +265,7 @@ export default function Navbar() {
               </div>
             </div>
 
-            <Link href="/artikel" className="text-slate-600 hover:text-teal-600 transition-colors">
-              Artikel
-            </Link>
+
           </div>
 
           {/* Desktop CTA */}
@@ -369,13 +367,7 @@ export default function Navbar() {
               ))}
             </div>
 
-            <Link
-              href="/artikel"
-              onClick={() => setMobileOpen(false)}
-              className="block px-4 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-teal-600 rounded-lg transition-colors"
-            >
-              Artikel
-            </Link>
+
             <div className="px-4 py-2 pb-4">
               <a
                 href="https://andislab.com/ready-stock"

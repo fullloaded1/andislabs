@@ -7,7 +7,6 @@ import CategoriesSection from "@/components/sections/CategoriesSection";
 import CTASection from "@/components/sections/CTASection";
 import FAQSection from "@/components/sections/FAQSection";
 import BrandPartnersSection from "@/components/sections/BrandPartnersSection";
-import ArticlesSection from "@/components/sections/ArticlesSection";
 import KatalogSection from "@/components/sections/KatalogSection";
 
 import {
@@ -59,7 +58,6 @@ export default async function HomePage() {
       <ServicesSection />
       <CategoriesSection />
       <KatalogSection />
-      <ArticlesSection />
       <FAQSection />
       <CTASection />
     </>

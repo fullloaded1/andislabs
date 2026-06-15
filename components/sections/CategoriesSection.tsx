@@ -79,6 +79,7 @@ export default function CategoriesSection() {
 
           <p className="text-slate-500 leading-relaxed">
             Lengkapi kebutuhan laboratorium dari empat kategori utama yang mencakup
+            <br />
             ribuan item dari brand-brand internasional terpercaya.
           </p>
         </div>

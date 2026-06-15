@@ -1,13 +1,11 @@
 import { MetadataRoute } from 'next';
 import { getAllProducts, KATEGORI_SLUGS } from '@/data/products';
-import { articles } from '@/data/articles';
 import { SITE_URL } from '@/lib/constants';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Static pages
   const staticPages = [
     { url: SITE_URL, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 1 },
-    { url: `${SITE_URL}/artikel`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.7 },
     { url: `${SITE_URL}/promo`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.7 },
     { url: `${SITE_URL}/garansi`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.5 },
     { url: `${SITE_URL}/konsultasi`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.5 },
@@ -30,13 +28,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }));
 
-  // Article pages
-  const articleUrls = articles.map((article) => ({
-    url: `${SITE_URL}/artikel/${article.slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: 0.6,
-  }));
-
-  return [...staticPages, ...categoryUrls, ...productUrls, ...articleUrls];
+  return [...staticPages, ...categoryUrls, ...productUrls];
 }

@@ -34,7 +34,7 @@ const BASE_SLIDES: Slide[] = [
     image: "/images/lovibond.jpg",
     eyebrow: "Authorized Distributor • Since 1885",
     headline1: "Solusi Terbaik",
-    headline2: "Lovibond® Indonesia",
+    headline2: "Lovibond®",
     sub: "Katalog produk pengujian kualitas air industri, laboratorium, lingkungan, dan water treatment dari Lovibond®.",
     isShowcase: true,
     waMessage: "Halo Andis Lab, saya tertarik dengan produk Lovibond. Boleh minta informasi dan penawaran?",
@@ -44,7 +44,7 @@ const BASE_SLIDES: Slide[] = [
     image: "/images/pyrex100.png",
     eyebrow: "Authorized Distributor • Trusted Since 1915",
     headline1: "Glassware Terbaik",
-    headline2: "Pyrex® Indonesia",
+    headline2: "Pyrex®",
     sub: "Katalog produk glassware laboratorium berkualitas tinggi untuk riset ilmiah, industri, dan pendidikan dari Pyrex®.",
     isShowcase: true,
     waMessage: "Halo Andis Lab, saya tertarik dengan produk Pyrex. Boleh minta informasi dan penawaran?",
@@ -74,10 +74,10 @@ const BASE_SLIDES: Slide[] = [
     image: "/images/railway_maintenance.png",
     eyebrow: "Solusi Pengujian & Perawatan • Transportasi",
     headline1: "Laboratorium Transportasi",
-    headline2: "& Perawatan Kereta Api",
-    sub: "Solusi lengkap peralatan dan instrumen pengujian untuk laboratorium transportasi dan maintenance perkeretaapian.",
+    headline2: "& Perawatan",
+    sub: "Solusi lengkap peralatan dan instrumen pengujian untuk laboratorium transportasi.",
     isShowcase: true,
-    waMessage: "Halo Andis Lab, saya tertarik dengan peralatan laboratorium transportasi dan perkeretaapian. Boleh minta informasi dan konsultasi?",
+    waMessage: "Halo Andis Lab, saya tertarik dengan peralatan laboratorium transportasi. Boleh minta informasi dan konsultasi?",
   },
 ];
 
@@ -210,7 +210,7 @@ export default function HeroSection({ promo }: HeroSectionProps) {
 
                 {/* Sub — responsive */}
                 <p
-                  className="text-sm sm:text-base leading-relaxed mb-6 sm:mb-8 max-w-md"
+                  className="text-sm sm:text-base leading-relaxed mb-6 sm:mb-8 max-w-md line-clamp-2"
                   style={{ color: "#4B6B8A", animation: active ? "heroTextUp 0.7s ease 0.32s both" : undefined }}
                 >
                   {s.sub}
