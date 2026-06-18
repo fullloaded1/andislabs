@@ -15,7 +15,7 @@ export default function ProductCard({ product }: ProductCardProps) {
     <article className="group bg-white rounded-2xl border border-slate-100 overflow-hidden hover:border-slate-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col">
       {/* Clickable image */}
       <a
-        href={`https://andislab.com/${product.main_kategori}/${product.slug}`}
+        href={`/${product.main_kategori}/${product.slug}`}
         target="_blank"
         rel="noopener noreferrer"
         className="relative h-52 flex items-center justify-center p-6 overflow-hidden flex-shrink-0 block bg-gradient-to-br from-slate-50 to-slate-100"
@@ -39,7 +39,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       <div className="p-5 flex flex-col flex-1">
         {/* Clickable title */}
         <a 
-          href={`https://andislab.com/${product.main_kategori}/${product.slug}`}
+          href={`/${product.main_kategori}/${product.slug}`}
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -57,7 +57,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         {/* Action buttons — standalone anchors, not nested inside Link */}
         <div className="flex gap-2 mt-auto">
           <a
-            href={`https://andislab.com/${product.main_kategori}/${product.slug}`}
+            href={`/${product.main_kategori}/${product.slug}`}
             target="_blank"
             rel="noopener noreferrer"
             className="flex-1 flex items-center justify-center text-center border border-slate-200 hover:border-teal-300 hover:text-teal-600 text-slate-700 text-xs font-semibold py-2.5 rounded-xl transition-colors"

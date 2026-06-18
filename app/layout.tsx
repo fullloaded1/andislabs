@@ -37,8 +37,6 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "id_ID",
-    url: SITE_URL,
-    siteName: SITE_NAME,
     title: `${SITE_NAME} | Mitra Terpercaya Laboratorium Indonesia`,
     description:
       "Distributor resmi peralatan laboratorium, furnitur lab custom, reagent, dan glassware terpercaya di Indonesia.",
@@ -58,11 +56,8 @@ export const metadata: Metadata = {
     ],
   },
   robots: {
-    index: true,
-    follow: true,
-  },
-  alternates: {
-    canonical: SITE_URL,
+    index: false,
+    follow: false,
   },
 };
 

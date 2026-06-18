@@ -271,7 +271,7 @@ export default function Navbar() {
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-3">
             <a
-              href="https://andislab.com/ready-stock"
+              href="/ready-stock"
               className="flex items-center gap-2 bg-teal-600 hover:bg-teal-700 text-white text-[13px] px-5 py-2.5 rounded-lg font-bold transition-colors shadow-sm"
             >
               Ready Stock
@@ -370,7 +370,7 @@ export default function Navbar() {
 
             <div className="px-4 py-2 pb-4">
               <a
-                href="https://andislab.com/ready-stock"
+                href="/ready-stock"
                 onClick={() => setMobileOpen(false)}
                 className="block w-full text-center px-4 py-2.5 text-sm font-bold text-white bg-teal-600 hover:bg-teal-700 rounded-lg transition-colors shadow-sm"
               >
