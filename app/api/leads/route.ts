@@ -10,10 +10,17 @@ interface LeadPayload {
   product: string;
 }
 
+import { verifyAccess } from '@/lib/gate';
+
 // ─── POST /api/leads ──────────────────────────────────────────────────────────
 
 export async function POST(req: NextRequest) {
   try {
+    const isAuthorized = await verifyAccess();
+    if (!isAuthorized) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
     // 1. Parse & validate request body
     const body = (await req.json()) as Partial<LeadPayload>;
 

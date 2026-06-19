@@ -31,9 +31,8 @@ export const metadata: Metadata = {
     "andis lab",
     "andislab",
   ],
-  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  authors: [{ name: SITE_NAME }],
   creator: SITE_NAME,
-  metadataBase: new URL(SITE_URL),
   openGraph: {
     type: "website",
     locale: "id_ID",
@@ -61,7 +60,10 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+import { verifyAccess } from "@/lib/gate";
+import GatePage from "@/app/gate/page";
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -81,26 +83,37 @@ export default function RootLayout({
     },
   };
 
+  const isAuthorized = await verifyAccess();
+
   return (
     <html lang="id" className={inter.variable}>
       <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        {isAuthorized && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          />
+        )}
       </head>
       <body className="min-h-screen flex flex-col">
-        <SkipLink />
-        <ToastProvider>
-          <Navbar />
-          <main id="main-content" className="flex-1">
-            {children}
-          </main>
-          <Footer />
-          <FloatingWhatsApp />
-        </ToastProvider>
-        {GA_MEASUREMENT_ID && <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />}
+        {!isAuthorized ? (
+          <GatePage />
+        ) : (
+          <>
+            <SkipLink />
+            <ToastProvider>
+              <Navbar />
+              <main id="main-content" className="flex-1">
+                {children}
+              </main>
+              <Footer />
+              <FloatingWhatsApp />
+            </ToastProvider>
+            {GA_MEASUREMENT_ID && <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />}
+          </>
+        )}
       </body>
     </html>
   );
 }
+

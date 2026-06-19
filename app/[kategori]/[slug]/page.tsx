@@ -33,7 +33,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     openGraph: {
       title: `${product.nama_produk} | ${SITE_NAME}`,
       description: product.deskripsi_singkat,
-      url: `${SITE_URL}/${kategori}/${slug}`,
       images: [
         {
           url: product.foto_utama.startsWith("http")
@@ -44,9 +43,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
           alt: product.nama_produk,
         },
       ],
-    },
-    alternates: {
-      canonical: `${SITE_URL}/${kategori}/${slug}`,
     },
   };
 }

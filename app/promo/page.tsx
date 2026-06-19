@@ -14,10 +14,8 @@ import PromoForm from './PromoForm';
 // ─── Metadata ─────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: 'Promo Spesial',
-  description:
-    'Dapatkan penawaran eksklusif produk laboratorium, reagen, dan furniture lab dari Andis Lab. Harga spesial, stok terbatas.',
-  alternates: { canonical: 'https://andislabs.com/promo' },
+  title: 'Promo Spesial & Penawaran Eksklusif | Andis Lab',
+  description: 'Dapatkan berbagai promo menarik dan penawaran spesial untuk peralatan laboratorium, reagent, dan bahan kimia dari Andis Lab. Waktu terbatas!',
 };
 
 // ─── Types ────────────────────────────────────────────────────────────────────
