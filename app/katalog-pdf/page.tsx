@@ -102,7 +102,7 @@ export default function KatalogPdfPage() {
 
           {/* Contact */}
           <div style={{ marginTop: 60, fontSize: 13, color: "#9ca3af" }}>
-            <p style={{ margin: 0 }}>Tel: +62 821-2552-3466 &nbsp;&middot;&nbsp; Email: sales@andislabs.com</p>
+            <p style={{ margin: 0 }}>Tel: +62 859-7321-1176 &nbsp;&middot;&nbsp; Email: sales@andislabs.com</p>
             <p style={{ margin: "6px 0 0", fontWeight: 600, color: "#0B3D91" }}>www.andislabs.com</p>
           </div>
         </div>
@@ -266,7 +266,7 @@ export default function KatalogPdfPage() {
               textAlign: "left",
             }}>
               {[
-                { label: "Telepon / WhatsApp", value: "+62 821-2552-3466" },
+                { label: "Telepon / WhatsApp", value: "+62 859-7321-1176" },
                 { label: "Email", value: "sales@andislabs.com" },
                 { label: "Website", value: "www.andislabs.com" },
                 { label: "Lokasi", value: "Jakarta, Indonesia" },

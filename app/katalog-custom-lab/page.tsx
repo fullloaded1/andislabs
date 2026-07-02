@@ -380,7 +380,7 @@ export default function KatalogCustomLabPage() {
           </div>
 
           <div style={{ marginTop: 52, fontSize: 13, color: "#9ca3af" }}>
-            <p style={{ margin: 0 }}>Tel: +62 821-2552-3466 &nbsp;·&nbsp; Email: sales@andislabs.com</p>
+            <p style={{ margin: 0 }}>Tel: +62 859-7321-1176 &nbsp;·&nbsp; Email: sales@andislabs.com</p>
             <p style={{ margin: "6px 0 0", fontWeight: 700, color: "#0D7A5F", fontSize: 14 }}>www.andislabs.com</p>
             <p style={{ margin: "12px 0 0", fontSize: 11, color: "#d1d5db" }}>© {year} Andis Lab. All Rights Reserved.</p>
           </div>
@@ -580,7 +580,7 @@ export default function KatalogCustomLabPage() {
 
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, textAlign: "left" }}>
               {[
-                { label: "Telepon / WhatsApp", value: "+62 821-2552-3466" },
+                { label: "Telepon / WhatsApp", value: "+62 859-7321-1176" },
                 { label: "Email", value: "sales@andislabs.com" },
                 { label: "Website", value: "www.andislabs.com" },
                 { label: "Lokasi", value: "Jakarta, Indonesia" },

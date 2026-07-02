@@ -22,7 +22,7 @@ const faqs = [
   {
     question: "Bagaimana cara meminta penawaran harga (Quotation)?",
     answer:
-      "Anda bisa klik tombol 'Tanya Harga' pada produk yang diinginkan, atau menghubungi WhatsApp resmi kami di 0821-2552-3466. Cantumkan nama, instansi/perusahaan, dan daftar barang yang dibutuhkan.",
+      "Anda bisa klik tombol 'Tanya Harga' pada produk yang diinginkan, atau menghubungi WhatsApp resmi kami di 0859-7321-1176. Cantumkan nama, instansi/perusahaan, dan daftar barang yang dibutuhkan.",
   },
   {
     question: "Apakah Andis Lab melayani pengiriman ke luar kota/pulau?",
